@@ -61,6 +61,92 @@ const db =
 
 
 /* ========================================
+   BACKGROUND WEDDING MUSIC
+======================================== */
+
+const weddingMusic =
+    document.getElementById(
+        "weddingMusic"
+    );
+
+
+async function playWeddingMusic() {
+
+    if (!weddingMusic) {
+        return;
+    }
+
+    try {
+
+        weddingMusic.volume = 0.55;
+
+        await weddingMusic.play();
+
+        removeMusicListeners();
+
+    } catch (error) {
+
+        // المتصفح منع التشغيل التلقائي
+        // سيتم التشغيل عند أول تفاعل من الزائر
+
+    }
+
+}
+
+
+function removeMusicListeners() {
+
+    document.removeEventListener(
+        "click",
+        playWeddingMusic
+    );
+
+    document.removeEventListener(
+        "touchstart",
+        playWeddingMusic
+    );
+
+    document.removeEventListener(
+        "keydown",
+        playWeddingMusic
+    );
+
+}
+
+
+/* محاولة تشغيل الأغنية تلقائيًا */
+
+window.addEventListener(
+    "load",
+    playWeddingMusic
+);
+
+
+/* لو المتصفح منع Autoplay
+   يتم التشغيل عند أول تفاعل */
+
+document.addEventListener(
+    "click",
+    playWeddingMusic
+);
+
+
+document.addEventListener(
+    "touchstart",
+    playWeddingMusic,
+    {
+        passive: true
+    }
+);
+
+
+document.addEventListener(
+    "keydown",
+    playWeddingMusic
+);
+
+
+/* ========================================
    REVEAL ON SCROLL
 ======================================== */
 
@@ -277,7 +363,7 @@ const secondsElement =
 
 const weddingDate =
     new Date(
-        "2026-08-21T19:00:00+03:00"
+        "2026-08-21T20:00:00+03:00"
     );
 
 
