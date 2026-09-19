@@ -12,9 +12,9 @@ A modern and interactive wedding invitation website built using pure HTML, CSS, 
 - Funny dynamic messages
 - Smooth transitions
 - Wedding invitation animation
-- RSVP system (coming soon)
-- Google Maps integration (coming soon)
-- Firebase / Google Sheets integration (coming soon)
+- RSVP system 
+- Google Maps integration 
+- Firebase / Google Sheets integration 
 
 ## 🛠 Technologies
 
