@@ -1,34 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;500;600&family=Lateef:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,500&display=swap');
 
 
-/* =========================================================
-   VARIABLES
-========================================================= */
-
 :root {
     --cream: #fffaf6;
-    --cream-dark: #f6e8e1;
     --paper: #fffdf9;
-
     --rose: #ac626c;
     --rose-dark: #744149;
     --rose-light: #d9a4a8;
-
     --gold: #b8935e;
     --gold-light: #dcc39c;
-
-    --green: #8b927e;
-
     --text: #604a4a;
     --muted: #9c8582;
-
-    --border: rgba(171, 116, 107, .2);
+    --border: rgba(171,116,107,.2);
 }
 
-
-/* =========================================================
-   RESET
-========================================================= */
 
 * {
     margin: 0;
@@ -44,16 +29,23 @@ html {
 
 body {
     min-height: 100vh;
-
     overflow-x: hidden;
 
     color: var(--text);
 
-    background: var(--cream);
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            #ffffff,
+            transparent 38%
+        ),
+        linear-gradient(
+            180deg,
+            #fffaf6,
+            #f8eee8
+        );
 
     font-family: "Cairo", sans-serif;
-
-    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -61,36 +53,22 @@ body::before {
     content: "";
 
     position: fixed;
-
     inset: 0;
 
-    z-index: -20;
+    z-index: -10;
 
     pointer-events: none;
 
     background:
         radial-gradient(
-            circle at 50% 0%,
-            rgba(255,255,255,.95),
-            transparent 35%
+            circle at 10% 50%,
+            rgba(217,164,168,.15),
+            transparent 25%
         ),
-
         radial-gradient(
-            circle at 10% 45%,
-            rgba(224,187,183,.19),
-            transparent 27%
-        ),
-
-        radial-gradient(
-            circle at 90% 70%,
-            rgba(224,187,183,.16),
-            transparent 27%
-        ),
-
-        linear-gradient(
-            180deg,
-            #fffaf6,
-            #f8eee8
+            circle at 90% 60%,
+            rgba(184,147,94,.09),
+            transparent 25%
         );
 }
 
@@ -107,9 +85,9 @@ textarea {
 }
 
 
-/* =========================================================
-   SIDE FLOWERS
-========================================================= */
+/* =========================================
+   SIDE DECORATION
+========================================= */
 
 .side-decoration {
     position: fixed;
@@ -118,36 +96,28 @@ textarea {
 
     z-index: 1;
 
-    width: 190px;
-    height: 450px;
+    width: 170px;
+    height: 430px;
 
     transform: translateY(-50%);
 
-    opacity: .34;
+    opacity: .25;
 
     pointer-events: none;
 }
 
 
 .left-decoration {
-    left: -80px;
+    left: -75px;
 }
 
 
 .right-decoration {
-    right: -80px;
+    right: -75px;
 
     transform:
         translateY(-50%)
         scaleX(-1);
-}
-
-
-.flower-cluster {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
 }
 
 
@@ -159,20 +129,18 @@ textarea {
 
 
 .flower-big {
-    top: 130px;
+    top: 125px;
     left: 25px;
 
-    font-size: 105px;
+    font-size: 100px;
 }
 
 
 .flower-small {
     top: 235px;
-    left: 90px;
+    left: 85px;
 
-    color: #d9aaa7;
-
-    font-size: 68px;
+    font-size: 65px;
 }
 
 
@@ -181,15 +149,15 @@ textarea {
 
     width: 1px;
 
-    background: rgba(132,141,112,.8);
+    background: rgba(125,141,112,.7);
 
     transform-origin: bottom;
 }
 
 
 .stem-one {
+    top: 40px;
     left: 105px;
-    top: 35px;
 
     height: 170px;
 
@@ -198,8 +166,8 @@ textarea {
 
 
 .stem-two {
-    left: 85px;
     top: 270px;
+    left: 85px;
 
     height: 130px;
 
@@ -211,9 +179,9 @@ textarea {
     position: absolute;
 
     width: 55px;
-    height: 21px;
+    height: 20px;
 
-    border: 1px solid rgba(125,141,112,.75);
+    border: 1px solid rgba(125,141,112,.65);
 
     border-radius: 100% 0 100% 0;
 }
@@ -251,9 +219,9 @@ textarea {
 }
 
 
-/* =========================================================
-   COMMON SECTIONS
-========================================================= */
+/* =========================================
+   COMMON
+========================================= */
 
 .section {
     position: relative;
@@ -289,21 +257,18 @@ textarea {
 .section-title {
     color: var(--rose-dark);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
-    font-size:
-        clamp(2.8rem, 8vw, 5rem);
+    font-size: clamp(2.8rem,8vw,5rem);
 
     font-weight: 400;
 }
 
 
 .section-description {
-    max-width: 520px;
+    max-width: 540px;
 
-    margin: 16px auto 0;
+    margin: 15px auto 0;
 
     color: var(--muted);
 
@@ -318,7 +283,7 @@ textarea {
 .small-ornament {
     color: var(--gold);
 
-    font-size: 2.2rem;
+    font-size: 2rem;
 }
 
 
@@ -338,22 +303,7 @@ textarea {
     width: 65px;
     height: 1px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold)
-        );
-}
-
-
-.title-decoration span:last-child {
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold),
-            transparent
-        );
+    background: var(--gold-light);
 }
 
 
@@ -364,14 +314,12 @@ textarea {
 }
 
 
-/* =========================================================
+/* =========================================
    HERO
-========================================================= */
+========================================= */
 
 .hero {
     position: relative;
-
-    z-index: 2;
 
     min-height: 100vh;
     min-height: 100svh;
@@ -381,20 +329,22 @@ textarea {
     align-items: center;
     justify-content: center;
 
-    padding: 55px 20px;
+    padding: 45px 20px;
 
     overflow: hidden;
 }
 
 
 .hero-content {
-    width: min(750px, 100%);
+    width: min(900px,100%);
 
     text-align: center;
 }
 
 
 .hero-top {
+    margin-bottom: 12px;
+
     color: var(--muted);
 
     font-family: "Lateef", serif;
@@ -403,20 +353,20 @@ textarea {
 }
 
 
-/* =========================================================
-   WEDDING FRAME
-========================================================= */
+/* =========================================
+   FRAME
+========================================= */
 
 .wedding-frame {
     position: relative;
 
-    width: min(570px, 92vw);
+    width: min(760px,94vw);
 
-    min-height: 500px;
+    min-height: 570px;
 
-    margin: 18px auto 0;
+    margin: auto;
 
-    padding: 70px 45px;
+    padding: 80px 50px;
 
     display: flex;
 
@@ -430,12 +380,12 @@ textarea {
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.82),
-            rgba(255,249,244,.72)
+            rgba(255,255,255,.86),
+            rgba(255,249,244,.75)
         );
 
     box-shadow:
-        0 30px 80px
+        0 35px 90px
         rgba(94,60,63,.11);
 }
 
@@ -449,9 +399,7 @@ textarea {
 
     border:
         1px solid
-        rgba(184,147,94,.35);
-
-    pointer-events: none;
+        rgba(184,147,94,.4);
 }
 
 
@@ -465,19 +413,17 @@ textarea {
     border:
         1px solid
         rgba(172,98,108,.12);
-
-    pointer-events: none;
 }
 
 
-/* =========================================================
+/* =========================================
    FRAME CORNERS
-========================================================= */
+========================================= */
 
 .frame-corner {
     position: absolute;
 
-    z-index: 5;
+    z-index: 4;
 
     color: var(--gold);
 
@@ -486,66 +432,60 @@ textarea {
 
 
 .frame-corner-1 {
-    left: 2px;
     top: -8px;
+    left: 2px;
 
     transform: rotate(-45deg);
 }
 
 
 .frame-corner-2 {
-    right: 2px;
     top: -8px;
+    right: 2px;
 
-    transform:
-        rotate(45deg)
-        scaleX(-1);
+    transform: rotate(45deg);
 }
 
 
 .frame-corner-3 {
-    left: 2px;
     bottom: -8px;
+    left: 2px;
 
     transform: rotate(-135deg);
 }
 
 
 .frame-corner-4 {
-    right: 2px;
     bottom: -8px;
+    right: 2px;
 
-    transform:
-        rotate(135deg)
-        scaleX(-1);
+    transform: rotate(135deg);
 }
 
 
-/* =========================================================
+/* =========================================
    FRAME FLOWERS
-========================================================= */
+========================================= */
 
 .frame-flower {
     position: absolute;
 
-    z-index: 6;
+    z-index: 5;
 
-    width: 110px;
-    height: 140px;
-
-    pointer-events: none;
+    width: 115px;
+    height: 145px;
 }
 
 
 .frame-flower-left {
-    left: -50px;
-    bottom: -45px;
+    left: -55px;
+    bottom: -50px;
 }
 
 
 .frame-flower-right {
-    right: -50px;
-    top: -45px;
+    right: -55px;
+    top: -50px;
 
     transform: rotate(180deg);
 }
@@ -559,7 +499,7 @@ textarea {
 
     color: #c98289;
 
-    font-size: 72px;
+    font-size: 75px;
 }
 
 
@@ -569,61 +509,61 @@ textarea {
     width: 45px;
     height: 18px;
 
-    border:
-        1px solid
-        rgba(125,141,112,.75);
+    border: 1px solid rgba(125,141,112,.7);
 
-    border-radius:
-        100% 0 100% 0;
+    border-radius: 100% 0 100% 0;
 }
 
 
 .frame-flower i:nth-of-type(1) {
-    left: 55px;
     top: 5px;
+    left: 55px;
 
     transform: rotate(60deg);
 }
 
 
 .frame-flower i:nth-of-type(2) {
-    left: 3px;
     top: 85px;
+    left: 3px;
 
     transform: rotate(-25deg);
 }
 
 
 .frame-flower i:nth-of-type(3) {
-    left: 65px;
     top: 110px;
+    left: 65px;
 
     transform: rotate(30deg);
 }
 
+
+/* =========================================
+   HERO CONTENT
+========================================= */
 
 .invitation-label {
     color: var(--gold);
 
     font-family: "Playfair Display", serif;
 
-    font-size: .58rem;
+    font-size: .6rem;
 
     letter-spacing: 5px;
 }
 
 
 .frame-line {
-    width: 220px;
+    width: 230px;
+
+    margin: 22px 0 30px;
 
     display: flex;
 
     align-items: center;
-    justify-content: center;
 
     gap: 10px;
-
-    margin: 20px 0 28px;
 }
 
 
@@ -632,22 +572,7 @@ textarea {
 
     height: 1px;
 
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold)
-        );
-}
-
-
-.frame-line span:last-child {
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold),
-            transparent
-        );
+    background: var(--gold-light);
 }
 
 
@@ -658,10 +583,9 @@ textarea {
 }
 
 
-/* =========================================================
+/* =========================================
    NAMES
-   أصغر من التصميم القديم
-========================================================= */
+========================================= */
 
 .main-names {
     display: flex;
@@ -678,15 +602,12 @@ textarea {
 
     color: var(--rose-dark);
 
-    font-family:
-        "Aref Ruqaa",
-        serif;
+    font-family: "Aref Ruqaa", serif;
 
     /*
-       هنا صغرنا الأسماء
+       أصغر وأنعم من الصورة الحالية
     */
-    font-size:
-        clamp(3rem, 8vw, 5rem);
+    font-size: clamp(2.8rem,6vw,4.6rem);
 
     font-weight: 400;
 
@@ -702,7 +623,7 @@ textarea {
     left: 50%;
     bottom: -7px;
 
-    width: 60%;
+    width: 55%;
     height: 1px;
 
     transform: translateX(-50%);
@@ -720,9 +641,7 @@ textarea {
 .ampersand {
     color: var(--gold);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: 2rem;
 
@@ -731,22 +650,22 @@ textarea {
 
 
 .hero-message {
-    margin-top: 30px;
+    max-width: 560px;
 
-    color: #89716e;
+    margin-top: 32px;
 
-    font-family:
-        "Lateef",
-        serif;
+    color: #806967;
 
-    font-size: 1.35rem;
+    font-family: "Lateef", serif;
 
-    line-height: 1.55;
+    font-size: 1.45rem;
+
+    line-height: 1.7;
 }
 
 
 .frame-bottom-line {
-    width: min(330px,100%);
+    width: min(350px,100%);
 
     margin-top: 28px;
 
@@ -770,21 +689,17 @@ textarea {
 .frame-bottom-line b {
     color: var(--rose-dark);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .65rem;
-
-    font-weight: 400;
 
     letter-spacing: 2px;
 }
 
 
-/* =========================================================
+/* =========================================
    SCROLL
-========================================================= */
+========================================= */
 
 .scroll-indicator {
     width: fit-content;
@@ -806,9 +721,7 @@ textarea {
 
 
 .scroll-indicator span {
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .45rem;
 
@@ -820,11 +733,9 @@ textarea {
     position: relative;
 
     width: 20px;
-    height: 32px;
+    height: 35px;
 
-    border:
-        1px solid
-        rgba(116,65,73,.35);
+    border: 1px solid rgba(116,65,73,.35);
 
     border-radius: 20px;
 }
@@ -870,339 +781,94 @@ textarea {
         opacity: 0;
 
         transform:
-            translate(-50%,11px);
+            translate(-50%,12px);
     }
 }
 
 
-/* =========================================================
-   STORY SECTION
-========================================================= */
+/* =========================================
+   STORY
+========================================= */
 
-.gallery-section {
-    position: relative;
-
-    overflow: hidden;
-
-    min-height: 80vh;
-
+.story-section {
     background:
-        radial-gradient(
-            circle at 10% 45%,
-            rgba(212,169,168,.16),
-            transparent 25%
-        ),
-
-        radial-gradient(
-            circle at 90% 60%,
-            rgba(212,169,168,.14),
-            transparent 25%
-        ),
-
-        rgba(255,255,255,.38);
+        rgba(255,255,255,.35);
 }
 
 
-.gallery-section::after {
-    content: "❦";
+.story-card {
+    position: relative;
 
-    position: absolute;
+    width: min(620px,100%);
 
-    left: 50%;
-    bottom: 25px;
+    margin: 50px auto 0;
 
-    transform: translateX(-50%);
+    padding: 50px 35px;
 
-    color:
-        rgba(184,147,94,.55);
+    border:
+        1px solid
+        var(--border);
+
+    background:
+        rgba(255,253,249,.8);
+
+    box-shadow:
+        0 25px 60px
+        rgba(90,60,60,.06);
+}
+
+
+.story-icon {
+    margin-bottom: 20px;
+
+    color: var(--gold);
 
     font-size: 2rem;
-
-    pointer-events: none;
 }
 
 
-.gallery-container {
-    position: relative;
+.story-card p {
+    margin: 12px auto;
 
-    z-index: 5;
+    color: #806967;
+
+    font-family: "Lateef", serif;
+
+    font-size: 1.45rem;
+
+    line-height: 1.7;
 }
 
 
-.gallery-container::before {
-    content: "✿";
-
-    position: absolute;
-
-    top: 25%;
-    left: -100px;
-
-    z-index: -1;
-
-    color:
-        rgba(201,135,142,.15);
-
-    font-size: 105px;
-
-    transform: rotate(-18deg);
-
-    pointer-events: none;
-}
-
-
-.gallery-container::after {
-    content: "❀";
-
-    position: absolute;
-
-    right: -100px;
-    bottom: 15%;
-
-    z-index: -1;
-
-    color:
-        rgba(217,171,168,.18);
-
-    font-size: 100px;
-
-    transform: rotate(20deg);
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   STORY QUOTE
-========================================================= */
-
-.gallery-quote {
-    position: relative;
-
-    width:
-        min(620px, 92vw);
-
-    margin:
-        55px auto 15px;
-
-    padding:
-        40px 35px 35px;
-}
-
-
-.gallery-quote::before {
-    content: "“";
-
-    position: absolute;
-
-    top: -25px;
-    left: 50%;
-
-    transform:
-        translateX(-50%);
-
-    color:
-        rgba(184,147,94,.18);
-
-    font-family:
-        Georgia,
-        serif;
-
-    font-size: 8rem;
-
-    line-height: 1;
-}
-
-
-.gallery-quote::after {
-    content: "❦";
-
-    position: absolute;
-
-    right: -45px;
-    top: 50%;
-
-    color:
-        rgba(184,147,94,.24);
-
-    font-size: 4.5rem;
-
-    transform:
-        translateY(-50%)
-        rotate(25deg);
-
-    pointer-events: none;
-}
-
-
-.quote-decoration {
-    position: relative;
-
-    z-index: 2;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 12px;
-
-    margin-bottom: 25px;
-}
-
-
-.quote-decoration span {
-    width: 80px;
-    height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            transparent,
-            var(--gold-light)
-        );
-}
-
-
-.quote-decoration span:last-child {
-    background:
-        linear-gradient(
-            90deg,
-            var(--gold-light),
-            transparent
-        );
-}
-
-
-.quote-decoration b {
-    color: var(--gold);
-
-    font-size: 1.3rem;
-
-    font-weight: 400;
-}
-
-
-.quote-text {
-    position: relative;
-
-    z-index: 2;
-
-    color: #806765;
-
-    font-family:
-        "Aref Ruqaa",
-        serif;
-
-    font-size:
-        clamp(1.45rem, 4vw, 1.9rem);
-
-    line-height: 2;
-}
-
-
-.quote-heart {
-    position: relative;
-
-    z-index: 2;
-
+.story-card strong {
     display: block;
 
-    margin-top: 20px;
+    margin-top: 25px;
 
-    color: var(--rose);
+    color: var(--rose-dark);
+
+    font-family: "Playfair Display", serif;
 
     font-size: .8rem;
-}
-
-
-.quote-signature {
-    position: relative;
-
-    z-index: 2;
-
-    margin-top: 8px;
-
-    color: var(--gold);
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: .65rem;
-
-    font-style: italic;
 
     letter-spacing: 2px;
 }
 
 
-/* =========================================================
+/* =========================================
    DATE
-========================================================= */
-
-.date-section {
-    position: relative;
-
-    overflow: hidden;
-}
-
-
-.date-section::before {
-    content: "✿";
-
-    position: absolute;
-
-    left: -45px;
-    top: 120px;
-
-    z-index: -1;
-
-    color:
-        rgba(201,135,142,.14);
-
-    font-size: 140px;
-
-    transform:
-        rotate(-18deg);
-
-    pointer-events: none;
-}
-
-
-.date-section::after {
-    content: "❀";
-
-    position: absolute;
-
-    right: -40px;
-    bottom: 130px;
-
-    z-index: -1;
-
-    color:
-        rgba(217,171,168,.16);
-
-    font-size: 125px;
-
-    transform:
-        rotate(20deg);
-
-    pointer-events: none;
-}
-
+========================================= */
 
 .big-date {
+    margin-top: 15px;
+
     display: flex;
 
     flex-direction: column;
 
     align-items: center;
 
-    margin-top: 12px;
-
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 }
 
 
@@ -1216,12 +882,11 @@ textarea {
 
 
 .big-date strong {
-    margin: -5px 0;
+    margin: -7px 0;
 
     color: var(--rose-dark);
 
-    font-size:
-        clamp(7rem,22vw,12rem);
+    font-size: clamp(7rem,20vw,11rem);
 
     font-weight: 400;
 
@@ -1234,9 +899,7 @@ textarea {
 
     color: var(--muted);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .65rem;
 
@@ -1244,72 +907,25 @@ textarea {
 }
 
 
-/* =========================================================
+/* =========================================
    CALENDAR
-========================================================= */
+========================================= */
 
 .calendar {
-    position: relative;
+    width: min(430px,100%);
 
-    width:
-        min(430px,100%);
+    margin: 50px auto 0;
 
-    margin:
-        50px auto 0;
+    padding: 30px 25px;
 
-    padding:
-        30px 25px;
-
-    border:
-        1px solid
-        var(--border);
+    border: 1px solid var(--border);
 
     background:
-        rgba(255,253,249,.78);
+        rgba(255,253,249,.8);
 
     box-shadow:
         0 25px 60px
         rgba(90,60,60,.06);
-}
-
-
-.calendar::before {
-    content: "❦";
-
-    position: absolute;
-
-    left: -42px;
-    top: -40px;
-
-    color:
-        rgba(184,147,94,.38);
-
-    font-size: 3.5rem;
-
-    transform:
-        rotate(-30deg);
-
-    pointer-events: none;
-}
-
-
-.calendar::after {
-    content: "❦";
-
-    position: absolute;
-
-    right: -42px;
-    bottom: -40px;
-
-    color:
-        rgba(184,147,94,.38);
-
-    font-size: 3.5rem;
-
-    transform:
-        rotate(150deg);
-
-    pointer-events: none;
 }
 
 
@@ -1329,17 +945,14 @@ textarea {
 
     height: 1px;
 
-    background:
-        var(--gold-light);
+    background: var(--gold-light);
 }
 
 
 .calendar-header h3 {
     color: var(--rose-dark);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .68rem;
 
@@ -1362,9 +975,7 @@ textarea {
 
     color: var(--gold);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .55rem;
 }
@@ -1375,9 +986,7 @@ textarea {
 
     color: #7b6563;
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .68rem;
 }
@@ -1408,8 +1017,6 @@ textarea {
     left: 50%;
     top: 50%;
 
-    z-index: 0;
-
     transform:
         translate(-50%,-50%);
 
@@ -1423,14 +1030,12 @@ textarea {
     position: relative;
 
     z-index: 2;
-
-    font-weight: 500;
 }
 
 
-/* =========================================================
+/* =========================================
    COUNTDOWN
-========================================================= */
+========================================= */
 
 .countdown-wrapper {
     margin-top: 60px;
@@ -1440,9 +1045,7 @@ textarea {
 .countdown-wrapper > p {
     color: var(--gold);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .55rem;
 
@@ -1458,8 +1061,7 @@ textarea {
     align-items: center;
     justify-content: center;
 
-    gap:
-        clamp(6px,2vw,18px);
+    gap: clamp(6px,2vw,18px);
 }
 
 
@@ -1475,12 +1077,9 @@ textarea {
 
     color: var(--rose-dark);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
-    font-size:
-        clamp(2rem,7vw,3.8rem);
+    font-size: clamp(2rem,7vw,3.8rem);
 
     font-weight: 400;
 
@@ -1495,9 +1094,7 @@ textarea {
 
     color: var(--muted);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .43rem;
 
@@ -1509,62 +1106,17 @@ textarea {
     width: 1px;
     height: 45px;
 
-    background:
-        var(--gold-light);
+    background: var(--gold-light);
 }
 
 
-/* =========================================================
+/* =========================================
    LOCATION
-========================================================= */
+========================================= */
 
 .location-section {
-    position: relative;
-
-    overflow: hidden;
-
     background:
-        rgba(255,255,255,.38);
-}
-
-
-.location-section::before {
-    content: "❀";
-
-    position: absolute;
-
-    left: -50px;
-    bottom: 100px;
-
-    color:
-        rgba(202,145,146,.15);
-
-    font-size: 135px;
-
-    transform:
-        rotate(-20deg);
-
-    pointer-events: none;
-}
-
-
-.location-section::after {
-    content: "✿";
-
-    position: absolute;
-
-    right: -55px;
-    top: 120px;
-
-    color:
-        rgba(201,135,142,.14);
-
-    font-size: 145px;
-
-    transform:
-        rotate(22deg);
-
-    pointer-events: none;
+        rgba(255,255,255,.35);
 }
 
 
@@ -1580,12 +1132,10 @@ textarea {
 .location-name {
     color: var(--rose-dark);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size:
-        clamp(3.2rem,10vw,6rem);
+        clamp(2.8rem,8vw,5.5rem);
 
     font-weight: 400;
 
@@ -1596,9 +1146,7 @@ textarea {
 .location-place {
     color: var(--gold);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .65rem;
 
@@ -1609,65 +1157,20 @@ textarea {
 .location-card {
     position: relative;
 
-    width:
-        min(520px,100%);
+    width: min(560px,100%);
 
-    margin:
-        45px auto 0;
+    margin: 45px auto 0;
 
-    padding:
-        45px 30px;
+    padding: 45px 30px;
 
-    border:
-        1px solid
-        var(--border);
+    border: 1px solid var(--border);
 
     background:
-        rgba(255,253,249,.8);
+        rgba(255,253,249,.82);
 
     box-shadow:
         0 25px 60px
         rgba(90,60,60,.07);
-}
-
-
-.location-card::before {
-    content: "❦";
-
-    position: absolute;
-
-    left: -22px;
-    top: -25px;
-
-    color:
-        rgba(184,147,94,.5);
-
-    font-size: 3rem;
-
-    transform:
-        rotate(-45deg);
-
-    pointer-events: none;
-}
-
-
-.location-card::after {
-    content: "❦";
-
-    position: absolute;
-
-    right: -22px;
-    bottom: -25px;
-
-    color:
-        rgba(184,147,94,.5);
-
-    font-size: 3rem;
-
-    transform:
-        rotate(135deg);
-
-    pointer-events: none;
 }
 
 
@@ -1679,24 +1182,24 @@ textarea {
 
 
 .location-card-title {
-    color: var(--muted);
+    margin-top: 5px;
 
-    font-family:
-        "Lateef",
-        serif;
+    color: var(--gold);
 
-    font-size: 1rem;
+    font-family: "Playfair Display", serif;
+
+    font-size: .75rem;
+
+    letter-spacing: 3px;
 }
 
 
 .location-card h3 {
-    margin-top: 3px;
+    margin-top: 8px;
 
     color: var(--rose-dark);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: 2rem;
 
@@ -1720,8 +1223,7 @@ textarea {
     width: 1px;
     height: 38px;
 
-    background:
-        var(--gold-light);
+    background: var(--gold-light);
 }
 
 
@@ -1736,9 +1238,7 @@ textarea {
 
     color: var(--gold);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .46rem;
 
@@ -1754,9 +1254,7 @@ textarea {
 
     color: var(--text);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .72rem;
 
@@ -1769,20 +1267,14 @@ textarea {
 }
 
 
-.venue-address strong + strong {
-    margin-top: 4px;
-}
-
-
-/* =========================================================
+/* =========================================
    BUTTON
-========================================================= */
+========================================= */
 
 .main-button {
     min-height: 52px;
 
-    padding:
-        12px 27px;
+    padding: 12px 27px;
 
     display: inline-flex;
 
@@ -1808,25 +1300,18 @@ textarea {
         0 13px 30px
         rgba(128,70,77,.2);
 
-    font-family:
-        "Cairo",
-        sans-serif;
-
-    font-size: .68rem;
+    font-size: .65rem;
 
     text-decoration: none;
 
     cursor: pointer;
 
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
+    transition: .3s ease;
 }
 
 
 .main-button:hover {
-    transform:
-        translateY(-3px);
+    transform: translateY(-3px);
 
     box-shadow:
         0 18px 35px
@@ -1835,73 +1320,20 @@ textarea {
 
 
 .main-button:disabled {
-    opacity: .65;
-
-    cursor: not-allowed;
-
-    transform: none;
+    opacity: .6;
 }
 
 
-/* =========================================================
+/* =========================================
    ADULTS ONLY
-========================================================= */
-
-.adults-section {
-    position: relative;
-
-    overflow: hidden;
-
-    background:
-        rgba(255,255,255,.3);
-}
-
-
-.adults-section::before {
-    content: "✿";
-
-    position: absolute;
-
-    left: -40px;
-    top: 80px;
-
-    color:
-        rgba(201,135,142,.12);
-
-    font-size: 120px;
-
-    pointer-events: none;
-}
-
-
-.adults-section::after {
-    content: "❀";
-
-    position: absolute;
-
-    right: -40px;
-    bottom: 80px;
-
-    color:
-        rgba(217,171,168,.14);
-
-    font-size: 120px;
-
-    pointer-events: none;
-}
-
+========================================= */
 
 .adults-card {
-    position: relative;
-
-    max-width: 560px;
+    width: min(560px,100%);
 
     margin: 35px auto 0;
 
-    padding:
-        48px 30px;
-
-    text-align: center;
+    padding: 48px 30px;
 
     border:
         1px solid
@@ -1932,9 +1364,7 @@ textarea {
 
     color: var(--rose-dark);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: 2rem;
 
@@ -1943,17 +1373,15 @@ textarea {
 
 
 .adults-card p {
-    max-width: 440px;
+    max-width: 450px;
 
     margin: auto;
 
     color: var(--muted);
 
-    font-family:
-        "Lateef",
-        serif;
+    font-family: "Lateef", serif;
 
-    font-size: 1.35rem;
+    font-size: 1.4rem;
 
     line-height: 1.7;
 }
@@ -1966,9 +1394,7 @@ textarea {
 
     color: var(--rose);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .75rem;
 
@@ -1976,12 +1402,13 @@ textarea {
 }
 
 
-/* =========================================================
-   RESERVED SEAT
-========================================================= */
+/* =========================================
+   RESERVED
+========================================= */
 
 .reserved-section {
     padding-top: 70px;
+
     padding-bottom: 70px;
 }
 
@@ -1991,10 +1418,7 @@ textarea {
 
     margin: auto;
 
-    padding:
-        35px 25px;
-
-    text-align: center;
+    padding: 35px 25px;
 
     border-top:
         1px solid
@@ -2007,13 +1431,9 @@ textarea {
 
 
 .reserved-card > span {
-    display: block;
+    color: var(--rose);
 
-    margin-bottom: 12px;
-
-    color: var(--gold);
-
-    font-size: 1.6rem;
+    font-size: 1.7rem;
 }
 
 
@@ -2022,9 +1442,7 @@ textarea {
 
     color: var(--muted);
 
-    font-family:
-        "Lateef",
-        serif;
+    font-family: "Lateef", serif;
 
     font-size: 1.25rem;
 }
@@ -2033,79 +1451,24 @@ textarea {
 .reserved-card strong {
     display: block;
 
-    margin: 4px 0;
-
     color: var(--rose-dark);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
-    font-size: 2.2rem;
+    font-size: 2.3rem;
 
     font-weight: 400;
 }
 
 
-/* =========================================================
+/* =========================================
    GUEST BOOK
-========================================================= */
-
-.guestbook-section {
-    position: relative;
-
-    overflow: hidden;
-}
-
-
-.guestbook-section::before {
-    content: "✿";
-
-    position: absolute;
-
-    left: -40px;
-    top: 130px;
-
-    color:
-        rgba(201,135,142,.13);
-
-    font-size: 135px;
-
-    transform:
-        rotate(-18deg);
-
-    pointer-events: none;
-}
-
-
-.guestbook-section::after {
-    content: "❀";
-
-    position: absolute;
-
-    right: -40px;
-    bottom: 110px;
-
-    color:
-        rgba(217,171,168,.16);
-
-    font-size: 125px;
-
-    transform:
-        rotate(18deg);
-
-    pointer-events: none;
-}
-
+========================================= */
 
 .guestbook-card {
-    position: relative;
+    width: min(560px,100%);
 
-    width:
-        min(540px,100%);
-
-    margin:
-        40px auto 0;
+    margin: 40px auto 0;
 
     padding: 35px;
 
@@ -2124,46 +1487,6 @@ textarea {
 }
 
 
-.guestbook-card::before {
-    content: "❦";
-
-    position: absolute;
-
-    left: -20px;
-    bottom: -25px;
-
-    color:
-        rgba(184,147,94,.45);
-
-    font-size: 2.8rem;
-
-    transform:
-        rotate(-135deg);
-
-    pointer-events: none;
-}
-
-
-.guestbook-card::after {
-    content: "❦";
-
-    position: absolute;
-
-    right: -20px;
-    top: -25px;
-
-    color:
-        rgba(184,147,94,.45);
-
-    font-size: 2.8rem;
-
-    transform:
-        rotate(45deg);
-
-    pointer-events: none;
-}
-
-
 .form-group + .form-group {
     margin-top: 20px;
 }
@@ -2176,7 +1499,7 @@ textarea {
 
     color: var(--rose-dark);
 
-    font-size: .72rem;
+    font-size: .7rem;
 }
 
 
@@ -2192,32 +1515,21 @@ textarea {
 
     color: var(--text);
 
-    background:
-        rgba(255,255,255,.8);
-
-    font-family:
-        "Cairo",
-        sans-serif;
-
-    transition:
-        border .25s ease,
-        box-shadow .25s ease;
+    background: rgba(255,255,255,.8);
 }
 
 
 .form-group input {
     height: 52px;
 
-    padding:
-        0 17px;
+    padding: 0 17px;
 }
 
 
 .form-group textarea {
     min-height: 135px;
 
-    padding:
-        15px 17px;
+    padding: 15px 17px;
 
     resize: vertical;
 }
@@ -2225,8 +1537,7 @@ textarea {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color:
-        var(--rose-light);
+    border-color: var(--rose-light);
 
     box-shadow:
         0 0 0 4px
@@ -2241,15 +1552,14 @@ textarea {
 }
 
 
-/* =========================================================
-   COMMENT SUCCESS
-========================================================= */
+/* =========================================
+   SUCCESS
+========================================= */
 
 .comment-success {
     display: none;
 
-    padding:
-        20px 5px;
+    padding: 20px 5px;
 
     text-align: center;
 }
@@ -2261,20 +1571,6 @@ textarea {
     color: var(--rose);
 
     font-size: 3rem;
-
-    animation:
-        heartBeat
-        1s ease-in-out
-        infinite alternate;
-}
-
-
-@keyframes heartBeat {
-
-    to {
-        transform:
-            scale(1.15);
-    }
 }
 
 
@@ -2283,35 +1579,31 @@ textarea {
 
     color: var(--rose-dark);
 
-    font-family:
-        "Aref Ruqaa",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: 2rem;
+
+    font-weight: 400;
 }
 
 
 .comment-success p {
     color: var(--muted);
 
-    font-family:
-        "Lateef",
-        serif;
+    font-family: "Lateef", serif;
 
     font-size: 1.2rem;
 }
 
 
-/* =========================================================
+/* =========================================
    COMMENTS
-========================================================= */
+========================================= */
 
 .comments-area {
-    width:
-        min(620px,100%);
+    width: min(620px,100%);
 
-    margin:
-        60px auto 0;
+    margin: 60px auto 0;
 }
 
 
@@ -2329,17 +1621,14 @@ textarea {
 
     height: 1px;
 
-    background:
-        var(--gold-light);
+    background: var(--gold-light);
 }
 
 
 .comments-title p {
     color: var(--gold);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .5rem;
 
@@ -2379,17 +1668,14 @@ textarea {
 .empty-comments p {
     margin-top: 8px;
 
-    font-family:
-        "Lateef",
-        serif;
+    font-family: "Lateef", serif;
 
     font-size: 1.15rem;
 }
 
 
 .comment-item {
-    padding:
-        22px 25px;
+    padding: 22px 25px;
 
     text-align: left;
 
@@ -2399,38 +1685,15 @@ textarea {
 
     background:
         rgba(255,253,249,.75);
-
-    animation:
-        commentIn .6s ease;
-}
-
-
-@keyframes commentIn {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
 }
 
 
 .comment-item h4 {
     color: var(--rose-dark);
 
-    font-family:
-        "Aref Ruqaa",
-        serif;
+    font-family: "Playfair Display", serif;
 
-    font-size: 1.3rem;
+    font-size: 1rem;
 }
 
 
@@ -2439,13 +1702,9 @@ textarea {
 
     color: var(--muted);
 
-    font-family:
-        "Lateef",
-        serif;
+    font-family: "Lateef", serif;
 
     font-size: 1.15rem;
-
-    line-height: 1.5;
 }
 
 
@@ -2456,74 +1715,24 @@ textarea {
 
     color: var(--gold);
 
-    font-family:
-        "Playfair Display",
-        serif;
-
     font-size: .45rem;
-
-    letter-spacing: 1px;
 }
 
 
-/* =========================================================
+/* =========================================
    FOOTER
-========================================================= */
+========================================= */
 
 .footer {
     position: relative;
 
-    z-index: 2;
-
-    overflow: hidden;
-
-    padding:
-        80px 20px;
+    padding: 80px 20px;
 
     text-align: center;
 
-    background:
-        #f3e5de;
-}
+    background: #f3e5de;
 
-
-.footer::before {
-    content: "✿";
-
-    position: absolute;
-
-    left: -35px;
-    bottom: -35px;
-
-    color:
-        rgba(201,135,142,.18);
-
-    font-size: 130px;
-
-    transform:
-        rotate(-20deg);
-
-    pointer-events: none;
-}
-
-
-.footer::after {
-    content: "❀";
-
-    position: absolute;
-
-    right: -35px;
-    top: -30px;
-
-    color:
-        rgba(201,135,142,.18);
-
-    font-size: 125px;
-
-    transform:
-        rotate(20deg);
-
-    pointer-events: none;
+    overflow: hidden;
 }
 
 
@@ -2539,37 +1748,27 @@ textarea {
 
     color: var(--rose-dark);
 
-    font-family:
-        "Aref Ruqaa",
-        serif;
+    font-family: "Aref Ruqaa", serif;
 
-    font-size:
-        clamp(2.2rem,7vw,3.5rem);
+    font-size: clamp(2.2rem,7vw,3.5rem);
 
     font-weight: 400;
 }
 
 
 .footer h2 span {
-    margin:
-        0 8px;
+    margin: 0 8px;
 
     color: var(--gold);
 
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: .65em;
+    font-family: "Playfair Display", serif;
 }
 
 
 .footer p {
     color: var(--gold);
 
-    font-family:
-        "Playfair Display",
-        serif;
+    font-family: "Playfair Display", serif;
 
     font-size: .58rem;
 
@@ -2584,292 +1783,66 @@ textarea {
 
     color: var(--muted);
 
-    font-family:
-        "Lateef",
-        serif;
+    font-family: "Lateef", serif;
 
     font-size: 1rem;
 }
 
 
-/* =========================================================
-   REVEAL ANIMATION
-========================================================= */
+/* =========================================
+   REVEAL
+========================================= */
 
 .reveal {
     opacity: 0;
 
-    transform:
-        translateY(35px);
+    transform: translateY(30px);
 
     transition:
         opacity .9s ease,
-        transform .9s
-        cubic-bezier(.16,1,.3,1);
+        transform .9s ease;
 }
 
 
 .reveal.visible {
     opacity: 1;
 
-    transform:
-        translateY(0);
+    transform: translateY(0);
 }
 
 
-/* =========================================================
+/* =========================================
    MOBILE
-========================================================= */
+========================================= */
 
 @media (max-width: 700px) {
 
     .side-decoration {
-        width: 120px;
-
-        opacity: .2;
-    }
-
-
-    .left-decoration {
-        left: -75px;
-    }
-
-
-    .right-decoration {
-        right: -75px;
+        opacity: .15;
     }
 
 
     .hero {
-        padding:
-            45px 18px;
+        padding: 35px 15px;
     }
 
 
     .wedding-frame {
         width: 94vw;
 
-        min-height: 480px;
+        min-height: 540px;
 
-        padding:
-            60px 25px;
+        padding: 60px 22px;
     }
 
-
-    /*
-       الأسماء على الموبايل
-    */
 
     .main-names {
-        flex-direction: column;
-
-        gap: 2px;
+        gap: 10px;
     }
 
 
     .main-names h1 {
-        font-size: 3.7rem;
-    }
-
-
-    .ampersand {
-        margin:
-            -4px 0;
-
-        font-size: 1.7rem;
-    }
-
-
-    .hero-message {
-        font-size: 1.2rem;
-    }
-
-
-    .frame-flower {
-        transform:
-            scale(.75);
-    }
-
-
-    .frame-flower-left {
-        left: -45px;
-    }
-
-
-    .frame-flower-right {
-        right: -45px;
-
-        transform:
-            rotate(180deg)
-            scale(.75);
-    }
-
-
-    .section {
-        padding:
-            85px 18px;
-    }
-
-
-    .gallery-container::before {
-        left: -50px;
-
-        top: 40%;
-
-        font-size: 65px;
-    }
-
-
-    .gallery-container::after {
-        right: -50px;
-
-        font-size: 65px;
-    }
-
-
-    .gallery-quote {
-        margin-top: 55px;
-
-        padding:
-            30px 10px;
-    }
-
-
-    .gallery-quote::after {
-        right: -15px;
-
-        font-size: 3rem;
-    }
-
-
-    .quote-text {
-        font-size: 1.4rem;
-
-        line-height: 1.85;
-    }
-
-
-    .quote-decoration span {
-        width: 55px;
-    }
-
-
-    .date-section::before,
-    .date-section::after,
-    .location-section::before,
-    .location-section::after,
-    .guestbook-section::before,
-    .guestbook-section::after,
-    .adults-section::before,
-    .adults-section::after {
-        font-size: 85px;
-
-        opacity: .75;
-    }
-
-
-    .calendar {
-        padding:
-            25px 15px;
-    }
-
-
-    .calendar::before {
-        left: -15px;
-        top: -35px;
-
-        font-size: 2.5rem;
-    }
-
-
-    .calendar::after {
-        right: -15px;
-        bottom: -35px;
-
-        font-size: 2.5rem;
-    }
-
-
-    .countdown {
-        gap: 4px;
-    }
-
-
-    .countdown > div {
-        min-width: 60px;
-    }
-
-
-    .countdown strong {
-        font-size: 2.1rem;
-    }
-
-
-    .countdown span {
-        font-size: .38rem;
-    }
-
-
-    .countdown i {
-        height: 35px;
-    }
-
-
-    .location-name {
-        font-size:
-            clamp(2.7rem,12vw,4.5rem);
-    }
-
-
-    .location-card {
-        padding:
-            38px 20px;
-    }
-
-
-    .location-details {
-        gap: 15px;
-    }
-
-
-    .location-details div {
-        min-width: 100px;
-    }
-
-
-    .adults-card {
-        padding:
-            38px 20px;
-    }
-
-
-    .adults-card h2 {
-        font-size: 1.8rem;
-    }
-
-
-    .guestbook-card {
-        padding:
-            28px 18px;
-    }
-
-
-    .footer::before,
-    .footer::after {
-        font-size: 85px;
-    }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-========================================================= */
-
-@media (max-width: 420px) {
-
-    .main-names h1 {
-        font-size: 3.35rem;
+        font-size: 2.65rem;
     }
 
 
@@ -2878,23 +1851,15 @@ textarea {
     }
 
 
-    .invitation-label {
-        font-size: .5rem;
+    .hero-message {
+        font-size: 1.25rem;
 
-        letter-spacing: 3px;
-    }
-
-
-    .wedding-frame {
-        min-height: 455px;
-
-        padding:
-            50px 18px;
+        line-height: 1.65;
     }
 
 
     .frame-flower {
-        opacity: .6;
+        transform: scale(.75);
     }
 
 
@@ -2905,57 +1870,103 @@ textarea {
 
     .frame-flower-right {
         right: -55px;
+
+        transform:
+            rotate(180deg)
+            scale(.75);
     }
 
 
-    .quote-text {
-        font-size: 1.25rem;
+    .section {
+        padding: 85px 18px;
+    }
+
+
+    .calendar {
+        padding: 25px 15px;
+    }
+
+
+    .countdown {
+        gap: 4px;
     }
 
 
     .countdown > div {
-        min-width: 52px;
+        min-width: 58px;
     }
 
 
     .countdown strong {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
 
     .countdown i {
-        height: 30px;
+        height: 35px;
+    }
+
+
+    .location-name {
+        font-size: 2.8rem;
+    }
+
+
+    .location-card {
+        padding: 38px 20px;
     }
 
 
     .location-details {
-        gap: 8px;
+        gap: 12px;
     }
 
 
     .location-details div {
-        min-width: 85px;
+        min-width: 100px;
+    }
+
+
+    .guestbook-card {
+        padding: 28px 18px;
     }
 
 }
 
 
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
+@media (max-width: 420px) {
 
-@media (prefers-reduced-motion: reduce) {
+    .main-names {
+        flex-direction: column;
 
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
+        gap: 0;
+    }
 
-        animation-duration: .01ms !important;
 
-        animation-iteration-count: 1 !important;
+    .main-names h1 {
+        font-size: 2.8rem;
+    }
 
-        transition-duration: .01ms !important;
+
+    .ampersand {
+        font-size: 1.3rem;
+
+        margin: -4px 0;
+    }
+
+
+    .wedding-frame {
+        min-height: 550px;
+    }
+
+
+    .location-details {
+        gap: 5px;
+    }
+
+
+    .location-details div {
+        min-width: 85px;
     }
 
 }
