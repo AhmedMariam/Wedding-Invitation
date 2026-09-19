@@ -1,13 +1,13 @@
 "use strict";
 
 
-/* =========================================
+/* ========================================
    FIREBASE
-========================================= */
+======================================== */
 
 import {
     initializeApp
-} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 
 
 import {
@@ -18,18 +18,17 @@ import {
     orderBy,
     onSnapshot,
     serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
 
-/* =========================================
+/* ========================================
    NEW FIREBASE PROJECT
-   groom-bride-wedding-2026
-========================================= */
+======================================== */
 
 const firebaseConfig = {
 
     apiKey:
-        "AIzaSyDyHRm9JpYhBP4hMuuQDY-XkYYydpoWz3c",
+        "AIzaSyDHvRm9JpYhBP4hMuuQDY-XkYYydpoWz3c",
 
     authDomain:
         "groom-bride-wedding-2026.firebaseapp.com",
@@ -47,13 +46,14 @@ const firebaseConfig = {
         "1:738737147419:web:47d64bbeda233269c132be",
 
     measurementId:
-        "G-XZ6WY XJ4HF"
+        "G-XZ6WYXJ4HF"
+
 };
 
 
-/* =========================================
+/* ========================================
    INITIALIZE
-========================================= */
+======================================== */
 
 const app =
     initializeApp(firebaseConfig);
@@ -63,12 +63,14 @@ const db =
     getFirestore(app);
 
 
-/* =========================================
+/* ========================================
    MUSIC
-========================================= */
+======================================== */
 
 const weddingMusic =
-    document.getElementById("weddingMusic");
+    document.getElementById(
+        "weddingMusic"
+    );
 
 
 async function playWeddingMusic() {
@@ -87,11 +89,11 @@ async function playWeddingMusic() {
 
     } catch (error) {
 
-        console.log(
-            "Autoplay blocked. Waiting for user interaction."
-        );
+        // Browser blocked autoplay.
+        // Music will start after user interaction.
 
     }
+
 }
 
 
@@ -111,6 +113,7 @@ function removeMusicListeners() {
         "keydown",
         playWeddingMusic
     );
+
 }
 
 
@@ -129,7 +132,9 @@ document.addEventListener(
 document.addEventListener(
     "touchstart",
     playWeddingMusic,
-    { passive: true }
+    {
+        passive: true
+    }
 );
 
 
@@ -139,12 +144,14 @@ document.addEventListener(
 );
 
 
-/* =========================================
-   REVEAL
-========================================= */
+/* ========================================
+   REVEAL ON SCROLL
+======================================== */
 
 const revealElements =
-    document.querySelectorAll(".reveal");
+    document.querySelectorAll(
+        ".reveal"
+    );
 
 
 const revealObserver =
@@ -152,41 +159,52 @@ const revealObserver =
 
         (entries) => {
 
-            entries.forEach((entry) => {
+            entries.forEach(
+                (entry) => {
 
-                if (entry.isIntersecting) {
+                    if (
+                        entry.isIntersecting
+                    ) {
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+                        entry.target.classList.add(
+                            "visible"
+                        );
 
-                    revealObserver.unobserve(
-                        entry.target
-                    );
+                        revealObserver.unobserve(
+                            entry.target
+                        );
+
+                    }
 
                 }
-
-            });
+            );
 
         },
 
         {
-            threshold: 0.12
+            threshold: 0.12,
+
+            rootMargin:
+                "0px 0px -35px 0px"
         }
 
     );
 
 
-revealElements.forEach((element) => {
+revealElements.forEach(
+    (element) => {
 
-    revealObserver.observe(element);
+        revealObserver.observe(
+            element
+        );
 
-});
+    }
+);
 
 
-/* =========================================
-   HERO INTRO
-========================================= */
+/* ========================================
+   HERO ANIMATION
+======================================== */
 
 window.addEventListener(
     "load",
@@ -209,7 +227,7 @@ window.addEventListener(
                         );
 
                     },
-                    200 + index * 180
+                    150 + index * 150
                 );
 
             }
@@ -219,25 +237,40 @@ window.addEventListener(
 );
 
 
-/* =========================================
+/* ========================================
    COUNTDOWN
-========================================= */
+======================================== */
 
 const daysElement =
-    document.getElementById("days");
+    document.getElementById(
+        "days"
+    );
 
 
 const hoursElement =
-    document.getElementById("hours");
+    document.getElementById(
+        "hours"
+    );
 
 
 const minutesElement =
-    document.getElementById("minutes");
+    document.getElementById(
+        "minutes"
+    );
 
 
 const secondsElement =
-    document.getElementById("seconds");
+    document.getElementById(
+        "seconds"
+    );
 
+
+/*
+   Friday
+   23 October 2026
+   7:30 PM
+   Egypt time = UTC+03:00
+*/
 
 const weddingDate =
     new Date(
@@ -265,14 +298,24 @@ function updateCountdown() {
         now.getTime();
 
 
-    if (distance <= 0) {
+    if (
+        distance <= 0
+    ) {
 
-        daysElement.textContent = "00";
-        hoursElement.textContent = "00";
-        minutesElement.textContent = "00";
-        secondsElement.textContent = "00";
+        daysElement.textContent =
+            "00";
+
+        hoursElement.textContent =
+            "00";
+
+        minutesElement.textContent =
+            "00";
+
+        secondsElement.textContent =
+            "00";
 
         return;
+
     }
 
 
@@ -349,9 +392,9 @@ setInterval(
 );
 
 
-/* =========================================
+/* ========================================
    GUEST BOOK
-========================================= */
+======================================== */
 
 const guestName =
     document.getElementById(
@@ -395,9 +438,9 @@ const emptyComments =
     );
 
 
-/* =========================================
+/* ========================================
    FIRESTORE
-========================================= */
+======================================== */
 
 const commentsCollection =
     collection(
@@ -416,11 +459,13 @@ const commentsQuery =
     );
 
 
-/* =========================================
-   DISPLAY COMMENTS
-========================================= */
+/* ========================================
+   CREATE COMMENT
+======================================== */
 
-function createCommentElement(comment) {
+function createCommentElement(
+    comment
+) {
 
     const article =
         document.createElement(
@@ -459,8 +504,10 @@ function createCommentElement(comment) {
 
 
     if (
-        comment.createdAt &&
-        typeof comment.createdAt.toDate ===
+        comment.createdAt
+        &&
+        typeof comment.createdAt.toDate
+        ===
         "function"
     ) {
 
@@ -484,20 +531,27 @@ function createCommentElement(comment) {
     }
 
 
-    article.appendChild(name);
+    article.appendChild(
+        name
+    );
 
-    article.appendChild(message);
+    article.appendChild(
+        message
+    );
 
-    article.appendChild(date);
+    article.appendChild(
+        date
+    );
 
 
     return article;
+
 }
 
 
-/* =========================================
-   LIVE COMMENTS
-========================================= */
+/* ========================================
+   LOAD COMMENTS
+======================================== */
 
 onSnapshot(
 
@@ -505,16 +559,20 @@ onSnapshot(
 
     (snapshot) => {
 
-        commentsList.innerHTML = "";
+        commentsList.innerHTML =
+            "";
 
 
-        if (snapshot.empty) {
+        if (
+            snapshot.empty
+        ) {
 
             commentsList.appendChild(
                 emptyComments
             );
 
             return;
+
         }
 
 
@@ -539,11 +597,14 @@ onSnapshot(
     (error) => {
 
         console.error(
-            "Firebase error:",
+            "Error loading comments:",
             error
         );
 
-        commentsList.innerHTML = "";
+
+        commentsList.innerHTML =
+            "";
+
 
         commentsList.appendChild(
             emptyComments
@@ -554,12 +615,77 @@ onSnapshot(
 );
 
 
-/* =========================================
+/* ========================================
+   INPUT ERROR
+======================================== */
+
+function showInputError(
+    element
+) {
+
+    element.style.borderColor =
+        "#ac626c";
+
+
+    element.focus();
+
+
+    setTimeout(
+        () => {
+
+            element.style.borderColor =
+                "";
+
+        },
+        1300
+    );
+
+}
+
+
+/* ========================================
+   BUTTON LOADING
+======================================== */
+
+function setButtonLoading(
+    isLoading
+) {
+
+    sendComment.disabled =
+        isLoading;
+
+
+    if (
+        isLoading
+    ) {
+
+        sendComment.dataset.originalText =
+            sendComment.innerHTML;
+
+
+        sendComment.textContent =
+            "SENDING...";
+
+    } else {
+
+        sendComment.innerHTML =
+            sendComment.dataset.originalText
+            ||
+            "♥ SEND YOUR WISH";
+
+    }
+
+}
+
+
+/* ========================================
    SEND COMMENT
-========================================= */
+======================================== */
 
 sendComment.addEventListener(
+
     "click",
+
     async () => {
 
         const name =
@@ -572,53 +698,85 @@ sendComment.addEventListener(
 
         if (!name) {
 
-            guestName.focus();
+            showInputError(
+                guestName
+            );
 
             return;
+
+        }
+
+
+        if (
+            name.length > 50
+        ) {
+
+            showInputError(
+                guestName
+            );
+
+            return;
+
         }
 
 
         if (!message) {
 
-            guestComment.focus();
+            showInputError(
+                guestComment
+            );
 
             return;
+
         }
 
 
         if (
-            name.length > 50 ||
             message.length > 300
         ) {
 
+            showInputError(
+                guestComment
+            );
+
             return;
+
         }
 
 
         try {
 
-            sendComment.disabled =
-                true;
-
-
-            sendComment.textContent =
-                "SENDING...";
-
-
-            await addDoc(
-                commentsCollection,
-                {
-                    name: name,
-                    message: message,
-                    createdAt:
-                        serverTimestamp()
-                }
+            setButtonLoading(
+                true
             );
 
 
-            guestName.value = "";
+            await addDoc(
 
-            guestComment.value = "";
+                commentsCollection,
+
+                {
+
+                    name:
+                        name,
+
+                    message:
+                        message,
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+
+            );
+
+
+            guestName.value =
+                "";
+
+
+            guestComment.value =
+                "";
 
 
             commentForm.style.display =
@@ -634,6 +792,7 @@ sendComment.addEventListener(
 
                     commentSuccess.style.display =
                         "none";
+
 
                     commentForm.style.display =
                         "block";
@@ -652,34 +811,35 @@ sendComment.addEventListener(
 
 
             alert(
-                "Something went wrong. Please try again."
+                "There was a problem sending your wish. Please try again."
             );
-
 
         } finally {
 
-            sendComment.disabled =
-                false;
-
-            sendComment.textContent =
-                "♥ SEND YOUR WISH";
+            setButtonLoading(
+                false
+            );
 
         }
 
     }
+
 );
 
 
-/* =========================================
+/* ========================================
    CTRL + ENTER
-========================================= */
+======================================== */
 
 guestComment.addEventListener(
+
     "keydown",
+
     (event) => {
 
         if (
-            event.ctrlKey &&
+            event.ctrlKey
+            &&
             event.key === "Enter"
         ) {
 
@@ -688,4 +848,5 @@ guestComment.addEventListener(
         }
 
     }
+
 );
