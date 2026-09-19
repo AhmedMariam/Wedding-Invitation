@@ -2,12 +2,12 @@
 
 
 /* ========================================
-   FIREBASE
+   FIREBASE IMPORTS
 ======================================== */
 
 import {
     initializeApp
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
 
 
 import {
@@ -18,17 +18,18 @@ import {
     orderBy,
     onSnapshot,
     serverTimestamp
-} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
 
 /* ========================================
-   NEW FIREBASE PROJECT
+   FIREBASE CONFIG
+   NEW WEDDING PROJECT
 ======================================== */
 
 const firebaseConfig = {
 
     apiKey:
-        "AIzaSyDHvRm9JpYhBP4hMuuQDY-XkYYydpoWz3c",
+        "AIzaSyDHyRmJpYhBP4hMuuQDY-XkYYydpoWz3c",
 
     authDomain:
         "groom-bride-wedding-2026.firebaseapp.com",
@@ -52,19 +53,39 @@ const firebaseConfig = {
 
 
 /* ========================================
-   INITIALIZE
+   INITIALIZE FIREBASE SAFELY
 ======================================== */
 
-const app =
-    initializeApp(firebaseConfig);
+let db = null;
 
 
-const db =
-    getFirestore(app);
+try {
+
+    const app =
+        initializeApp(firebaseConfig);
+
+
+    db =
+        getFirestore(app);
+
+
+    console.log(
+        "Firebase initialized successfully."
+    );
+
+
+} catch (error) {
+
+    console.error(
+        "Firebase initialization error:",
+        error
+    );
+
+}
 
 
 /* ========================================
-   MUSIC
+   BACKGROUND WEDDING MUSIC
 ======================================== */
 
 const weddingMusic =
@@ -79,18 +100,28 @@ async function playWeddingMusic() {
         return;
     }
 
+
     try {
 
-        weddingMusic.volume = 0.55;
+        weddingMusic.volume =
+            0.55;
+
 
         await weddingMusic.play();
 
+
         removeMusicListeners();
+
 
     } catch (error) {
 
-        // Browser blocked autoplay.
-        // Music will start after user interaction.
+        /*
+            المتصفح ممكن يمنع
+            Autoplay.
+
+            في الحالة دي هنحاول
+            التشغيل بعد أول تفاعل.
+        */
 
     }
 
@@ -104,10 +135,12 @@ function removeMusicListeners() {
         playWeddingMusic
     );
 
+
     document.removeEventListener(
         "touchstart",
         playWeddingMusic
     );
+
 
     document.removeEventListener(
         "keydown",
@@ -117,11 +150,15 @@ function removeMusicListeners() {
 }
 
 
+/* محاولة التشغيل عند تحميل الصفحة */
+
 window.addEventListener(
     "load",
     playWeddingMusic
 );
 
+
+/* التشغيل بعد أول تفاعل */
 
 document.addEventListener(
     "click",
@@ -154,56 +191,89 @@ const revealElements =
     );
 
 
-const revealObserver =
-    new IntersectionObserver(
+function showAllRevealElements() {
 
-        (entries) => {
+    revealElements.forEach(
+        (element) => {
 
-            entries.forEach(
-                (entry) => {
-
-                    if (
-                        entry.isIntersecting
-                    ) {
-
-                        entry.target.classList.add(
-                            "visible"
-                        );
-
-                        revealObserver.unobserve(
-                            entry.target
-                        );
-
-                    }
-
-                }
+            element.classList.add(
+                "visible"
             );
 
-        },
-
-        {
-            threshold: 0.12,
-
-            rootMargin:
-                "0px 0px -35px 0px"
         }
+    );
 
+}
+
+
+/*
+    لو IntersectionObserver
+    مش مدعوم، نظهر كل العناصر.
+*/
+
+if (
+    "IntersectionObserver"
+    in window
+) {
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            (entries) => {
+
+                entries.forEach(
+                    (entry) => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target.classList.add(
+                                "visible"
+                            );
+
+
+                            revealObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: 0.12,
+
+                rootMargin:
+                    "0px 0px -35px 0px"
+            }
+
+        );
+
+
+    revealElements.forEach(
+        (element) => {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
     );
 
 
-revealElements.forEach(
-    (element) => {
+} else {
 
-        revealObserver.observe(
-            element
-        );
+    showAllRevealElements();
 
-    }
-);
+}
 
 
 /* ========================================
-   HERO ANIMATION
+   HERO INTRO
 ======================================== */
 
 window.addEventListener(
@@ -227,11 +297,187 @@ window.addEventListener(
                         );
 
                     },
-                    150 + index * 150
+
+                    180 +
+                    index * 180
                 );
 
             }
         );
+
+    }
+);
+
+
+/* ========================================
+   PHOTO LIGHTBOX
+   SAFE VERSION
+======================================== */
+
+const galleryItems =
+    document.querySelectorAll(
+        ".gallery-item"
+    );
+
+
+const lightbox =
+    document.getElementById(
+        "lightbox"
+    );
+
+
+const lightboxImage =
+    document.getElementById(
+        "lightboxImage"
+    );
+
+
+const lightboxClose =
+    document.getElementById(
+        "lightboxClose"
+    );
+
+
+/*
+    لو الـ Gallery موجودة
+    نشغل الـ Lightbox.
+*/
+
+if (
+    galleryItems.length > 0
+    &&
+    lightbox
+    &&
+    lightboxImage
+) {
+
+    galleryItems.forEach(
+        (item) => {
+
+            item.addEventListener(
+                "click",
+                () => {
+
+                    const image =
+                        item.dataset.image;
+
+
+                    if (!image) {
+                        return;
+                    }
+
+
+                    lightboxImage.src =
+                        image;
+
+
+                    lightbox.classList.add(
+                        "active"
+                    );
+
+
+                    document.body.style.overflow =
+                        "hidden";
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* ========================================
+   CLOSE LIGHTBOX
+======================================== */
+
+function closeLightbox() {
+
+    if (!lightbox) {
+        return;
+    }
+
+
+    lightbox.classList.remove(
+        "active"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
+
+    if (lightboxImage) {
+
+        setTimeout(
+            () => {
+
+                lightboxImage.src =
+                    "";
+
+            },
+
+            350
+        );
+
+    }
+
+}
+
+
+if (lightboxClose) {
+
+    lightboxClose.addEventListener(
+        "click",
+        closeLightbox
+    );
+
+}
+
+
+if (lightbox) {
+
+    lightbox.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                lightbox
+            ) {
+
+                closeLightbox();
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ========================================
+   ESC KEY FOR LIGHTBOX
+======================================== */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key === "Escape"
+            &&
+            lightbox
+            &&
+            lightbox.classList.contains(
+                "active"
+            )
+        ) {
+
+            closeLightbox();
+
+        }
 
     }
 );
@@ -266,10 +512,12 @@ const secondsElement =
 
 
 /*
-   Friday
-   23 October 2026
-   7:30 PM
-   Egypt time = UTC+03:00
+    Wedding:
+
+    Friday
+    23 October 2026
+    7:30 PM
+    Egypt / Cairo
 */
 
 const weddingDate =
@@ -288,6 +536,26 @@ function twoDigits(number) {
 
 function updateCountdown() {
 
+    /*
+        لو عناصر الـ Countdown
+        مش موجودة، نخرج بدون Error.
+    */
+
+    if (
+        !daysElement
+        ||
+        !hoursElement
+        ||
+        !minutesElement
+        ||
+        !secondsElement
+    ) {
+
+        return;
+
+    }
+
+
     const now =
         new Date();
 
@@ -298,21 +566,28 @@ function updateCountdown() {
         now.getTime();
 
 
-    if (
-        distance <= 0
-    ) {
+    /*
+        لو معاد الفرح وصل
+        أو عدى.
+    */
+
+    if (distance <= 0) {
 
         daysElement.textContent =
             "00";
 
+
         hoursElement.textContent =
             "00";
+
 
         minutesElement.textContent =
             "00";
 
+
         secondsElement.textContent =
             "00";
+
 
         return;
 
@@ -340,7 +615,9 @@ function updateCountdown() {
                     60 *
                     60
                 )
-            ) % 24
+            )
+            %
+            24
         );
 
 
@@ -352,7 +629,9 @@ function updateCountdown() {
                     1000 *
                     60
                 )
-            ) % 60
+            )
+            %
+            60
         );
 
 
@@ -361,7 +640,9 @@ function updateCountdown() {
             (
                 distance /
                 1000
-            ) % 60
+            )
+            %
+            60
         );
 
 
@@ -383,8 +664,12 @@ function updateCountdown() {
 }
 
 
+/* تشغيل الـ Countdown فورًا */
+
 updateCountdown();
 
+
+/* تحديث كل ثانية */
 
 setInterval(
     updateCountdown,
@@ -439,28 +724,70 @@ const emptyComments =
 
 
 /* ========================================
-   FIRESTORE
+   FIRESTORE COLLECTION
 ======================================== */
 
-const commentsCollection =
-    collection(
-        db,
-        "comments"
-    );
+let commentsCollection = null;
 
 
-const commentsQuery =
-    query(
-        commentsCollection,
-        orderBy(
-            "createdAt",
-            "desc"
-        )
-    );
+if (db) {
+
+    try {
+
+        commentsCollection =
+            collection(
+                db,
+                "comments"
+            );
+
+    } catch (error) {
+
+        console.error(
+            "Firestore collection error:",
+            error
+        );
+
+    }
+
+}
 
 
 /* ========================================
-   CREATE COMMENT
+   VALIDATION
+======================================== */
+
+function showInputError(
+    element
+) {
+
+    if (!element) {
+        return;
+    }
+
+
+    element.style.borderColor =
+        "#ac626c";
+
+
+    element.focus();
+
+
+    setTimeout(
+        () => {
+
+            element.style.borderColor =
+                "";
+
+        },
+
+        1300
+    );
+
+}
+
+
+/* ========================================
+   CREATE COMMENT ELEMENT
 ======================================== */
 
 function createCommentElement(
@@ -484,7 +811,8 @@ function createCommentElement(
 
 
     name.textContent =
-        comment.name;
+        comment.name ||
+        "Guest";
 
 
     const message =
@@ -494,7 +822,8 @@ function createCommentElement(
 
 
     message.textContent =
-        comment.message;
+        comment.message ||
+        "";
 
 
     const date =
@@ -502,6 +831,10 @@ function createCommentElement(
             "small"
         );
 
+
+    /*
+        Format Firebase Timestamp
+    */
 
     if (
         comment.createdAt
@@ -517,9 +850,14 @@ function createCommentElement(
                 .toLocaleDateString(
                     "en-GB",
                     {
-                        day: "2-digit",
-                        month: "short",
-                        year: "numeric"
+                        day:
+                            "2-digit",
+
+                        month:
+                            "short",
+
+                        year:
+                            "numeric"
                     }
                 );
 
@@ -535,9 +873,11 @@ function createCommentElement(
         name
     );
 
+
     article.appendChild(
         message
     );
+
 
     article.appendChild(
         date
@@ -550,128 +890,176 @@ function createCommentElement(
 
 
 /* ========================================
-   LOAD COMMENTS
+   SHOW EMPTY COMMENTS
 ======================================== */
 
-onSnapshot(
+function showEmptyComments() {
 
-    commentsQuery,
+    if (
+        !commentsList
+        ||
+        !emptyComments
+    ) {
 
-    (snapshot) => {
-
-        commentsList.innerHTML =
-            "";
-
-
-        if (
-            snapshot.empty
-        ) {
-
-            commentsList.appendChild(
-                emptyComments
-            );
-
-            return;
-
-        }
-
-
-        snapshot.forEach(
-            (documentSnapshot) => {
-
-                const comment =
-                    documentSnapshot.data();
-
-
-                commentsList.appendChild(
-                    createCommentElement(
-                        comment
-                    )
-                );
-
-            }
-        );
-
-    },
-
-    (error) => {
-
-        console.error(
-            "Error loading comments:",
-            error
-        );
-
-
-        commentsList.innerHTML =
-            "";
-
-
-        commentsList.appendChild(
-            emptyComments
-        );
+        return;
 
     }
 
-);
+
+    commentsList.innerHTML =
+        "";
 
 
-/* ========================================
-   INPUT ERROR
-======================================== */
-
-function showInputError(
-    element
-) {
-
-    element.style.borderColor =
-        "#ac626c";
-
-
-    element.focus();
-
-
-    setTimeout(
-        () => {
-
-            element.style.borderColor =
-                "";
-
-        },
-        1300
+    commentsList.appendChild(
+        emptyComments
     );
 
 }
 
 
 /* ========================================
-   BUTTON LOADING
+   LOAD COMMENTS FROM FIREBASE
+======================================== */
+
+if (
+    commentsCollection
+    &&
+    commentsList
+) {
+
+    try {
+
+        const commentsQuery =
+            query(
+                commentsCollection,
+                orderBy(
+                    "createdAt",
+                    "desc"
+                )
+            );
+
+
+        onSnapshot(
+
+            commentsQuery,
+
+            (snapshot) => {
+
+                commentsList.innerHTML =
+                    "";
+
+
+                if (
+                    snapshot.empty
+                ) {
+
+                    if (
+                        emptyComments
+                    ) {
+
+                        commentsList.appendChild(
+                            emptyComments
+                        );
+
+                    }
+
+                    return;
+
+                }
+
+
+                snapshot.forEach(
+                    (
+                        documentSnapshot
+                    ) => {
+
+                        const comment =
+                            documentSnapshot.data();
+
+
+                        commentsList.appendChild(
+
+                            createCommentElement(
+                                comment
+                            )
+
+                        );
+
+                    }
+                );
+
+            },
+
+            (error) => {
+
+                console.error(
+                    "Error loading comments:",
+                    error
+                );
+
+
+                showEmptyComments();
+
+            }
+
+        );
+
+    } catch (error) {
+
+        console.error(
+            "Firestore query error:",
+            error
+        );
+
+
+        showEmptyComments();
+
+    }
+
+} else {
+
+    /*
+        Firebase مش متاح.
+        الموقع نفسه يفضل شغال.
+    */
+
+    showEmptyComments();
+
+}
+
+
+/* ========================================
+   BUTTON LOADING STATE
 ======================================== */
 
 function setButtonLoading(
     isLoading
 ) {
 
+    if (!sendComment) {
+        return;
+    }
+
+
     sendComment.disabled =
         isLoading;
 
 
-    if (
-        isLoading
-    ) {
+    if (isLoading) {
 
         sendComment.dataset.originalText =
             sendComment.innerHTML;
 
 
         sendComment.textContent =
-            "SENDING...";
+            "جاري إرسال التهنئة...";
 
     } else {
 
         sendComment.innerHTML =
             sendComment.dataset.originalText
             ||
-            "♥ SEND YOUR WISH";
+            "♥ إرسال التهنئة";
 
     }
 
@@ -679,174 +1067,295 @@ function setButtonLoading(
 
 
 /* ========================================
-   SEND COMMENT
+   SEND COMMENT TO FIREBASE
 ======================================== */
 
-sendComment.addEventListener(
+if (
+    sendComment
+    &&
+    guestName
+    &&
+    guestComment
+) {
 
-    "click",
+    sendComment.addEventListener(
 
-    async () => {
+        "click",
 
-        const name =
-            guestName.value.trim();
+        async () => {
 
-
-        const message =
-            guestComment.value.trim();
-
-
-        if (!name) {
-
-            showInputError(
-                guestName
-            );
-
-            return;
-
-        }
+            const name =
+                guestName.value.trim();
 
 
-        if (
-            name.length > 50
-        ) {
-
-            showInputError(
-                guestName
-            );
-
-            return;
-
-        }
+            const message =
+                guestComment.value.trim();
 
 
-        if (!message) {
+            /* ========================================
+               NAME VALIDATION
+            ======================================== */
 
-            showInputError(
-                guestComment
-            );
+            if (!name) {
 
-            return;
+                showInputError(
+                    guestName
+                );
 
-        }
+                return;
 
-
-        if (
-            message.length > 300
-        ) {
-
-            showInputError(
-                guestComment
-            );
-
-            return;
-
-        }
+            }
 
 
-        try {
+            if (
+                name.length > 50
+            ) {
 
-            setButtonLoading(
-                true
-            );
+                showInputError(
+                    guestName
+                );
+
+                return;
+
+            }
 
 
-            await addDoc(
+            /* ========================================
+               MESSAGE VALIDATION
+            ======================================== */
 
-                commentsCollection,
+            if (!message) {
 
-                {
+                showInputError(
+                    guestComment
+                );
 
-                    name:
-                        name,
+                return;
 
-                    message:
-                        message,
+            }
 
-                    createdAt:
-                        serverTimestamp()
+
+            if (
+                message.length > 300
+            ) {
+
+                showInputError(
+                    guestComment
+                );
+
+                return;
+
+            }
+
+
+            /*
+                لو Firebase مش شغال
+            */
+
+            if (
+                !commentsCollection
+            ) {
+
+                alert(
+                    "خدمة التهنئة غير متاحة حاليًا. حاول مرة أخرى."
+                );
+
+                return;
+
+            }
+
+
+            /* ========================================
+               SEND TO FIRESTORE
+            ======================================== */
+
+            try {
+
+                setButtonLoading(
+                    true
+                );
+
+
+                await addDoc(
+
+                    commentsCollection,
+
+                    {
+
+                        name:
+                            name,
+
+                        message:
+                            message,
+
+                        createdAt:
+                            serverTimestamp()
+
+                    }
+
+                );
+
+
+                /* ========================================
+                   SUCCESS
+                ======================================== */
+
+                guestName.value =
+                    "";
+
+
+                guestComment.value =
+                    "";
+
+
+                if (
+                    commentForm
+                ) {
+
+                    commentForm.style.display =
+                        "none";
 
                 }
 
-            );
+
+                if (
+                    commentSuccess
+                ) {
+
+                    commentSuccess.style.display =
+                        "block";
+
+                }
 
 
-            guestName.value =
-                "";
+                setTimeout(
+                    () => {
+
+                        if (
+                            commentSuccess
+                        ) {
+
+                            commentSuccess.style.display =
+                                "none";
+
+                        }
 
 
-            guestComment.value =
-                "";
+                        if (
+                            commentForm
+                        ) {
+
+                            commentForm.style.display =
+                                "block";
+
+                        }
+
+                    },
+
+                    3000
+                );
 
 
-            commentForm.style.display =
-                "none";
+            } catch (error) {
+
+                console.error(
+                    "Error sending comment:",
+                    error
+                );
 
 
-            commentSuccess.style.display =
-                "block";
+                alert(
+                    "حصلت مشكلة أثناء إرسال التهنئة. حاول مرة أخرى."
+                );
 
+
+            } finally {
+
+                setButtonLoading(
+                    false
+                );
+
+            }
+
+        }
+
+    );
+
+}
+
+
+/* ========================================
+   CTRL + ENTER TO SEND
+======================================== */
+
+if (guestComment) {
+
+    guestComment.addEventListener(
+
+        "keydown",
+
+        (event) => {
+
+            if (
+                event.ctrlKey
+                &&
+                event.key === "Enter"
+            ) {
+
+                if (sendComment) {
+
+                    sendComment.click();
+
+                }
+
+            }
+
+        }
+
+    );
+
+}
+
+
+/* ========================================
+   FINAL SAFETY
+======================================== */
+
+/*
+    تأكيد إن الصفحة ظاهرة
+    حتى لو حصل Error في Firebase
+    أو أي جزء اختياري.
+*/
+
+document
+    .querySelectorAll(
+        ".reveal"
+    )
+    .forEach(
+        (element) => {
+
+            /*
+                لو العنصر لسه مستخبي
+                والـ Observer لم يشتغل،
+                نخليه ظاهر بعد فترة قصيرة.
+            */
 
             setTimeout(
                 () => {
 
-                    commentSuccess.style.display =
-                        "none";
-
-
-                    commentForm.style.display =
-                        "block";
+                    element.classList.add(
+                        "visible"
+                    );
 
                 },
-                3000
-            );
 
-
-        } catch (error) {
-
-            console.error(
-                "Error sending comment:",
-                error
-            );
-
-
-            alert(
-                "There was a problem sending your wish. Please try again."
-            );
-
-        } finally {
-
-            setButtonLoading(
-                false
+                1500
             );
 
         }
-
-    }
-
-);
+    );
 
 
-/* ========================================
-   CTRL + ENTER
-======================================== */
-
-guestComment.addEventListener(
-
-    "keydown",
-
-    (event) => {
-
-        if (
-            event.ctrlKey
-            &&
-            event.key === "Enter"
-        ) {
-
-            sendComment.click();
-
-        }
-
-    }
-
+console.log(
+    "Wedding website script loaded successfully."
 );
