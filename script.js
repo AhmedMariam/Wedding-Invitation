@@ -361,9 +361,16 @@ const secondsElement =
     document.getElementById("seconds");
 
 
+/*
+   Friday
+   23 October 2026
+   7:30 PM
+   Cairo / Egypt = UTC+3
+*/
+
 const weddingDate =
     new Date(
-        "2026-08-21T20:00:00+03:00"
+        "2026-10-23T19:30:00+03:00"
     );
 
 
@@ -542,13 +549,14 @@ const emptyComments =
 
 
 /* ========================================
-   FIRESTORE COLLECTION
+   NEW FIRESTORE COLLECTION
+   Separate from the old wedding
 ======================================== */
 
 const commentsCollection =
     collection(
         db,
-        "comments"
+        "comments_groom_bride_october_2026"
     );
 
 
@@ -759,14 +767,14 @@ function setButtonLoading(isLoading) {
 
 
         sendComment.textContent =
-            "جاري إرسال التهنئة...";
+            "Sending...";
 
     } else {
 
         sendComment.innerHTML =
             sendComment.dataset.originalText
             ||
-            "♥ إرسال التهنئة";
+            "♥ Send Wishes";
 
     }
 
@@ -911,7 +919,7 @@ sendComment.addEventListener(
 
 
             alert(
-                "حصلت مشكلة أثناء إرسال التهنئة. حاول مرة أخرى."
+                "There was a problem sending your message. Please try again."
             );
 
 
