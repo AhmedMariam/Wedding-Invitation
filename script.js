@@ -22,28 +22,31 @@ import {
 
 
 /* ========================================
-   FIREBASE CONFIG
+   NEW FIREBASE CONFIG
 ======================================== */
 
 const firebaseConfig = {
 
     apiKey:
-        "AIzaSyCxv19Fw1A58cQV08t0xEoICEtURF6wydM",
+        "AIzaSyDHyRm9JpYhBP4hMuuQDY-XkYYydpowZ3c",
 
     authDomain:
-        "wedding-invitation-55bca.firebaseapp.com",
+        "groom-bride-wedding-2026.firebaseapp.com",
 
     projectId:
-        "wedding-invitation-55bca",
+        "groom-bride-wedding-2026",
 
     storageBucket:
-        "wedding-invitation-55bca.firebasestorage.app",
+        "groom-bride-wedding-2026.firebasestorage.app",
 
     messagingSenderId:
-        "690183976618",
+        "738737147419",
 
     appId:
-        "1:690183976618:web:4cbf61c25a3ccbd38082d3"
+        "1:738737147419:web:47d64bbeda233269c132be",
+
+    measurementId:
+        "G-XZ6WYXJ4HF"
 
 };
 
@@ -61,7 +64,7 @@ const db =
 
 
 /* ========================================
-   BACKGROUND WEDDING MUSIC
+   BACKGROUND MUSIC
 ======================================== */
 
 const weddingMusic =
@@ -86,8 +89,8 @@ async function playWeddingMusic() {
 
     } catch (error) {
 
-        // المتصفح منع التشغيل التلقائي
-        // سيتم التشغيل عند أول تفاعل من الزائر
+        // Browser blocked autoplay.
+        // Music will start after first user interaction.
 
     }
 
@@ -114,16 +117,11 @@ function removeMusicListeners() {
 }
 
 
-/* محاولة تشغيل الأغنية تلقائيًا */
-
 window.addEventListener(
     "load",
     playWeddingMusic
 );
 
-
-/* لو المتصفح منع Autoplay
-   يتم التشغيل عند أول تفاعل */
 
 document.addEventListener(
     "click",
@@ -151,7 +149,9 @@ document.addEventListener(
 ======================================== */
 
 const revealElements =
-    document.querySelectorAll(".reveal");
+    document.querySelectorAll(
+        ".reveal"
+    );
 
 
 const revealObserver =
@@ -198,144 +198,32 @@ revealElements.forEach((element) => {
    HERO INTRO
 ======================================== */
 
-window.addEventListener("load", () => {
+window.addEventListener(
+    "load",
+    () => {
 
-    const heroElements =
-        document.querySelectorAll(
-            ".hero .reveal"
-        );
-
-
-    heroElements.forEach(
-        (element, index) => {
-
-            setTimeout(() => {
-
-                element.classList.add(
-                    "visible"
-                );
-
-            }, 180 + index * 180);
-
-        }
-    );
-
-});
-
-
-/* ========================================
-   PHOTO LIGHTBOX
-======================================== */
-
-const galleryItems =
-    document.querySelectorAll(
-        ".gallery-item"
-    );
-
-
-const lightbox =
-    document.getElementById(
-        "lightbox"
-    );
-
-
-const lightboxImage =
-    document.getElementById(
-        "lightboxImage"
-    );
-
-
-const lightboxClose =
-    document.getElementById(
-        "lightboxClose"
-    );
-
-
-galleryItems.forEach((item) => {
-
-    item.addEventListener(
-        "click",
-        () => {
-
-            const image =
-                item.dataset.image;
-
-
-            lightboxImage.src =
-                image;
-
-
-            lightbox.classList.add(
-                "active"
+        const heroElements =
+            document.querySelectorAll(
+                ".hero .reveal"
             );
 
 
-            document.body.style.overflow =
-                "hidden";
+        heroElements.forEach(
+            (element, index) => {
 
-        }
-    );
+                setTimeout(
+                    () => {
 
-});
+                        element.classList.add(
+                            "visible"
+                        );
 
+                    },
+                    180 + index * 180
+                );
 
-function closeLightbox() {
-
-    lightbox.classList.remove(
-        "active"
-    );
-
-
-    document.body.style.overflow =
-        "";
-
-
-    setTimeout(() => {
-
-        lightboxImage.src = "";
-
-    }, 350);
-
-}
-
-
-lightboxClose.addEventListener(
-    "click",
-    closeLightbox
-);
-
-
-lightbox.addEventListener(
-    "click",
-    (event) => {
-
-        if (
-            event.target === lightbox
-        ) {
-
-            closeLightbox();
-
-        }
-
-    }
-);
-
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "Escape"
-            &&
-            lightbox.classList.contains(
-                "active"
-            )
-        ) {
-
-            closeLightbox();
-
-        }
+            }
+        );
 
     }
 );
@@ -346,26 +234,34 @@ document.addEventListener(
 ======================================== */
 
 const daysElement =
-    document.getElementById("days");
+    document.getElementById(
+        "days"
+    );
 
 
 const hoursElement =
-    document.getElementById("hours");
+    document.getElementById(
+        "hours"
+    );
 
 
 const minutesElement =
-    document.getElementById("minutes");
+    document.getElementById(
+        "minutes"
+    );
 
 
 const secondsElement =
-    document.getElementById("seconds");
+    document.getElementById(
+        "seconds"
+    );
 
 
 /*
-   Friday
-   23 October 2026
-   7:30 PM
-   Cairo / Egypt = UTC+3
+    Friday
+    23 October 2026
+    7:30 PM
+    Egypt / Cairo
 */
 
 const weddingDate =
@@ -415,15 +311,11 @@ function updateCountdown() {
 
     const days =
         Math.floor(
-            distance
-            /
+            distance /
             (
-                1000
-                *
-                60
-                *
-                60
-                *
+                1000 *
+                60 *
+                60 *
                 24
             )
         );
@@ -432,13 +324,10 @@ function updateCountdown() {
     const hours =
         Math.floor(
             (
-                distance
-                /
+                distance /
                 (
-                    1000
-                    *
-                    60
-                    *
+                    1000 *
+                    60 *
                     60
                 )
             )
@@ -450,11 +339,9 @@ function updateCountdown() {
     const minutes =
         Math.floor(
             (
-                distance
-                /
+                distance /
                 (
-                    1000
-                    *
+                    1000 *
                     60
                 )
             )
@@ -466,8 +353,7 @@ function updateCountdown() {
     const seconds =
         Math.floor(
             (
-                distance
-                /
+                distance /
                 1000
             )
             %
@@ -549,19 +435,18 @@ const emptyComments =
 
 
 /* ========================================
-   NEW FIRESTORE COLLECTION
-   Separate from the old wedding
+   FIRESTORE
 ======================================== */
 
 const commentsCollection =
     collection(
         db,
-        "comments_groom_bride_october_2026"
+        "comments"
     );
 
 
 /* ========================================
-   VALIDATION
+   INPUT ERROR
 ======================================== */
 
 function showInputError(element) {
@@ -573,18 +458,21 @@ function showInputError(element) {
     element.focus();
 
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        element.style.borderColor =
-            "";
+            element.style.borderColor =
+                "";
 
-    }, 1300);
+        },
+        1300
+    );
 
 }
 
 
 /* ========================================
-   CREATE COMMENT ELEMENT
+   CREATE COMMENT
 ======================================== */
 
 function createCommentElement(comment) {
@@ -624,10 +512,6 @@ function createCommentElement(comment) {
             "small"
         );
 
-
-    /* ========================================
-       FORMAT FIREBASE DATE
-    ======================================== */
 
     if (
         comment.createdAt
@@ -670,23 +554,7 @@ function createCommentElement(comment) {
 
 
 /* ========================================
-   SHOW EMPTY COMMENTS
-======================================== */
-
-function showEmptyComments() {
-
-    commentsList.innerHTML = "";
-
-
-    commentsList.appendChild(
-        emptyComments
-    );
-
-}
-
-
-/* ========================================
-   LOAD COMMENTS FROM FIREBASE
+   LOAD COMMENTS
 ======================================== */
 
 const commentsQuery =
@@ -705,7 +573,8 @@ onSnapshot(
 
     (snapshot) => {
 
-        commentsList.innerHTML = "";
+        commentsList.innerHTML =
+            "";
 
 
         if (snapshot.empty) {
@@ -719,19 +588,21 @@ onSnapshot(
         }
 
 
-        snapshot.forEach((documentSnapshot) => {
+        snapshot.forEach(
+            (documentSnapshot) => {
 
-            const comment =
-                documentSnapshot.data();
+                const comment =
+                    documentSnapshot.data();
 
 
-            commentsList.appendChild(
-                createCommentElement(
-                    comment
-                )
-            );
+                commentsList.appendChild(
+                    createCommentElement(
+                        comment
+                    )
+                );
 
-        });
+            }
+        );
 
     },
 
@@ -743,7 +614,13 @@ onSnapshot(
         );
 
 
-        showEmptyComments();
+        commentsList.innerHTML =
+            "";
+
+
+        commentsList.appendChild(
+            emptyComments
+        );
 
     }
 
@@ -751,7 +628,7 @@ onSnapshot(
 
 
 /* ========================================
-   BUTTON LOADING STATE
+   BUTTON LOADING
 ======================================== */
 
 function setButtonLoading(isLoading) {
@@ -767,14 +644,14 @@ function setButtonLoading(isLoading) {
 
 
         sendComment.textContent =
-            "Sending...";
+            "SENDING...";
 
     } else {
 
         sendComment.innerHTML =
             sendComment.dataset.originalText
             ||
-            "♥ Send Wishes";
+            "♥ SEND WISHES";
 
     }
 
@@ -782,7 +659,7 @@ function setButtonLoading(isLoading) {
 
 
 /* ========================================
-   SEND COMMENT TO FIREBASE
+   SEND COMMENT
 ======================================== */
 
 sendComment.addEventListener(
@@ -798,10 +675,6 @@ sendComment.addEventListener(
         const message =
             guestComment.value.trim();
 
-
-        /* ========================================
-           NAME VALIDATION
-        ======================================== */
 
         if (!name) {
 
@@ -825,10 +698,6 @@ sendComment.addEventListener(
         }
 
 
-        /* ========================================
-           MESSAGE VALIDATION
-        ======================================== */
-
         if (!message) {
 
             showInputError(
@@ -850,10 +719,6 @@ sendComment.addEventListener(
 
         }
 
-
-        /* ========================================
-           SEND TO FIRESTORE
-        ======================================== */
 
         try {
 
@@ -878,10 +743,6 @@ sendComment.addEventListener(
             );
 
 
-            /* ========================================
-               SUCCESS
-            ======================================== */
-
             guestName.value =
                 "";
 
@@ -898,16 +759,19 @@ sendComment.addEventListener(
                 "block";
 
 
-            setTimeout(() => {
+            setTimeout(
+                () => {
 
-                commentSuccess.style.display =
-                    "none";
+                    commentSuccess.style.display =
+                        "none";
 
 
-                commentForm.style.display =
-                    "block";
+                    commentForm.style.display =
+                        "block";
 
-            }, 3000);
+                },
+                3000
+            );
 
 
         } catch (error) {
@@ -919,7 +783,7 @@ sendComment.addEventListener(
 
 
             alert(
-                "There was a problem sending your message. Please try again."
+                "Something went wrong while sending your message. Please try again."
             );
 
 
@@ -935,7 +799,7 @@ sendComment.addEventListener(
 
 
 /* ========================================
-   CTRL + ENTER TO SEND
+   CTRL + ENTER
 ======================================== */
 
 guestComment.addEventListener(
