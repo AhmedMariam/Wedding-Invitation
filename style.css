@@ -1,17 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Cairo:wght@300;400;500;600&family=Lateef:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600&family=Lateef:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500&display=swap');
 
 
 :root {
     --cream: #fffaf6;
     --paper: #fffdf9;
+
     --rose: #ac626c;
     --rose-dark: #744149;
     --rose-light: #d9a4a8;
+
     --gold: #b8935e;
     --gold-light: #dcc39c;
+
+    --green: #8b927e;
+
     --text: #604a4a;
     --muted: #9c8582;
-    --border: rgba(171,116,107,.2);
+
+    --border: rgba(171, 116, 107, .22);
 }
 
 
@@ -29,23 +35,16 @@ html {
 
 body {
     min-height: 100vh;
+
     overflow-x: hidden;
 
     color: var(--text);
 
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            #ffffff,
-            transparent 38%
-        ),
-        linear-gradient(
-            180deg,
-            #fffaf6,
-            #f8eee8
-        );
+    background: var(--cream);
 
     font-family: "Cairo", sans-serif;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -53,6 +52,7 @@ body::before {
     content: "";
 
     position: fixed;
+
     inset: 0;
 
     z-index: -10;
@@ -61,14 +61,24 @@ body::before {
 
     background:
         radial-gradient(
-            circle at 10% 50%,
-            rgba(217,164,168,.15),
-            transparent 25%
+            circle at 50% 0%,
+            rgba(255,255,255,.95),
+            transparent 35%
         ),
         radial-gradient(
-            circle at 90% 60%,
-            rgba(184,147,94,.09),
-            transparent 25%
+            circle at 10% 45%,
+            rgba(224,187,183,.18),
+            transparent 27%
+        ),
+        radial-gradient(
+            circle at 90% 70%,
+            rgba(224,187,183,.15),
+            transparent 27%
+        ),
+        linear-gradient(
+            180deg,
+            #fffaf6,
+            #f8eee8
         );
 }
 
@@ -85,35 +95,35 @@ textarea {
 }
 
 
-/* =========================================
+/* ========================================
    SIDE DECORATION
-========================================= */
+======================================== */
 
 .side-decoration {
     position: fixed;
 
     top: 50%;
 
-    z-index: 1;
-
-    width: 170px;
-    height: 430px;
+    width: 180px;
+    height: 450px;
 
     transform: translateY(-50%);
 
-    opacity: .25;
+    opacity: .3;
 
     pointer-events: none;
+
+    z-index: 1;
 }
 
 
 .left-decoration {
-    left: -75px;
+    left: -85px;
 }
 
 
 .right-decoration {
-    right: -75px;
+    right: -85px;
 
     transform:
         translateY(-50%)
@@ -124,116 +134,90 @@ textarea {
 .flower {
     position: absolute;
 
-    color: #c98088;
+    color: #c98289;
 }
 
 
-.flower-big {
-    top: 125px;
-    left: 25px;
+.flower-one {
+    top: 120px;
+    left: 20px;
 
-    font-size: 100px;
+    font-size: 110px;
 }
 
 
-.flower-small {
-    top: 235px;
-    left: 85px;
+.flower-two {
+    top: 245px;
+    left: 90px;
+
+    color: #d9aaa7;
 
     font-size: 65px;
-}
-
-
-.stem {
-    position: absolute;
-
-    width: 1px;
-
-    background: rgba(125,141,112,.7);
-
-    transform-origin: bottom;
-}
-
-
-.stem-one {
-    top: 40px;
-    left: 105px;
-
-    height: 170px;
-
-    transform: rotate(18deg);
-}
-
-
-.stem-two {
-    top: 270px;
-    left: 85px;
-
-    height: 130px;
-
-    transform: rotate(-17deg);
 }
 
 
 .leaf {
     position: absolute;
 
-    width: 55px;
-    height: 20px;
+    width: 60px;
+    height: 22px;
 
-    border: 1px solid rgba(125,141,112,.65);
+    border:
+        1px solid
+        rgba(125,141,112,.7);
 
-    border-radius: 100% 0 100% 0;
+    border-radius:
+        100% 0 100% 0;
 }
 
 
-.leaf-1 {
+.leaf-one {
     top: 80px;
-    left: 100px;
+    left: 95px;
 
     transform: rotate(40deg);
 }
 
 
-.leaf-2 {
+.leaf-two {
     top: 110px;
-    left: 50px;
+    left: 45px;
 
     transform: rotate(-25deg);
 }
 
 
-.leaf-3 {
-    top: 315px;
-    left: 80px;
+.leaf-three {
+    top: 340px;
+    left: 55px;
 
-    transform: rotate(35deg);
+    transform: rotate(30deg);
 }
 
 
-.leaf-4 {
-    top: 350px;
-    left: 35px;
-
-    transform: rotate(-30deg);
-}
-
-
-/* =========================================
-   COMMON
-========================================= */
+/* ========================================
+   SECTIONS
+======================================== */
 
 .section {
     position: relative;
 
     z-index: 2;
 
-    padding: 110px 20px;
+    min-height: 100vh;
+
+    padding:
+        110px
+        20px;
+
+    display: flex;
+
+    align-items: center;
 }
 
 
 .section-container {
-    width: min(820px, 100%);
+    width: min(900px, 100%);
 
     margin: auto;
 
@@ -242,68 +226,85 @@ textarea {
 
 
 .section-label {
-    margin-bottom: 12px;
+    margin-bottom: 14px;
 
     color: var(--gold);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .6rem;
+    font-size: .62rem;
 
-    letter-spacing: 4px;
-}
-
-
-.section-title {
-    color: var(--rose-dark);
-
-    font-family: "Playfair Display", serif;
-
-    font-size: clamp(2.8rem,8vw,5rem);
-
-    font-weight: 400;
-}
-
-
-.section-description {
-    max-width: 540px;
-
-    margin: 15px auto 0;
-
-    color: var(--muted);
-
-    font-family: "Lateef", serif;
-
-    font-size: 1.35rem;
-
-    line-height: 1.6;
+    letter-spacing: 5px;
 }
 
 
 .small-ornament {
+    margin-bottom: 10px;
+
     color: var(--gold);
 
     font-size: 2rem;
 }
 
 
+.section-title {
+    color: var(--rose-dark);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            2.7rem,
+            7vw,
+            5rem
+        );
+
+    font-weight: 400;
+
+    line-height: 1.2;
+}
+
+
 .title-decoration {
+    margin:
+        16px
+        auto
+        25px;
+
     display: flex;
 
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     gap: 10px;
-
-    margin-top: 10px;
 }
 
 
 .title-decoration span {
-    width: 65px;
+    width: 70px;
+
     height: 1px;
 
-    background: var(--gold-light);
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold)
+        );
+}
+
+
+.title-decoration span:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
 }
 
 
@@ -314,79 +315,92 @@ textarea {
 }
 
 
-/* =========================================
+/* ========================================
    HERO
-========================================= */
+======================================== */
 
 .hero {
     position: relative;
 
+    z-index: 2;
+
     min-height: 100vh;
     min-height: 100svh;
 
+    padding:
+        45px
+        20px
+        30px;
+
     display: flex;
 
-    align-items: center;
     justify-content: center;
-
-    padding: 45px 20px;
+    align-items: center;
 
     overflow: hidden;
 }
 
 
 .hero-content {
-    width: min(900px,100%);
+    width: min(900px, 100%);
 
     text-align: center;
 }
 
 
 .hero-top {
-    margin-bottom: 12px;
+    margin-bottom: 18px;
 
     color: var(--muted);
 
-    font-family: "Lateef", serif;
+    font-family:
+        "Lateef",
+        serif;
 
-    font-size: 1.25rem;
+    font-size: 1.4rem;
+
+    font-weight: 600;
 }
 
 
-/* =========================================
+/* ========================================
    FRAME
-========================================= */
+======================================== */
 
 .wedding-frame {
     position: relative;
 
-    width: min(760px,94vw);
+    width: min(760px, 92vw);
 
-    min-height: 570px;
+    min-height: 560px;
 
     margin: auto;
 
-    padding: 80px 50px;
+    padding:
+        75px
+        55px;
 
     display: flex;
 
     flex-direction: column;
 
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
-    border: 1px solid var(--gold-light);
+    border:
+        1px solid
+        var(--gold-light);
 
     background:
         linear-gradient(
             145deg,
-            rgba(255,255,255,.86),
-            rgba(255,249,244,.75)
+            rgba(255,255,255,.82),
+            rgba(255,249,244,.7)
         );
 
     box-shadow:
         0 35px 90px
-        rgba(94,60,63,.11);
+        rgba(94,60,63,.12);
 }
 
 
@@ -395,11 +409,11 @@ textarea {
 
     position: absolute;
 
-    inset: 9px;
+    inset: 10px;
 
     border:
         1px solid
-        rgba(184,147,94,.4);
+        rgba(184,147,94,.35);
 }
 
 
@@ -408,7 +422,7 @@ textarea {
 
     position: absolute;
 
-    inset: 18px;
+    inset: 20px;
 
     border:
         1px solid
@@ -416,148 +430,110 @@ textarea {
 }
 
 
-/* =========================================
-   FRAME CORNERS
-========================================= */
+/* ========================================
+   CORNERS
+======================================== */
 
 .frame-corner {
     position: absolute;
 
-    z-index: 4;
+    z-index: 5;
 
     color: var(--gold);
 
-    font-size: 35px;
+    font-size: 36px;
 }
 
 
-.frame-corner-1 {
+.corner-one {
     top: -8px;
-    left: 2px;
+    left: 4px;
 
     transform: rotate(-45deg);
 }
 
 
-.frame-corner-2 {
+.corner-two {
     top: -8px;
-    right: 2px;
+    right: 4px;
 
-    transform: rotate(45deg);
+    transform:
+        rotate(45deg)
+        scaleX(-1);
 }
 
 
-.frame-corner-3 {
+.corner-three {
     bottom: -8px;
-    left: 2px;
+    left: 4px;
 
     transform: rotate(-135deg);
 }
 
 
-.frame-corner-4 {
+.corner-four {
     bottom: -8px;
-    right: 2px;
+    right: 4px;
 
-    transform: rotate(135deg);
+    transform:
+        rotate(135deg)
+        scaleX(-1);
 }
 
 
-/* =========================================
-   FRAME FLOWERS
-========================================= */
+/* ========================================
+   FLOWERS INSIDE FRAME
+======================================== */
 
 .frame-flower {
     position: absolute;
 
-    z-index: 5;
-
-    width: 115px;
-    height: 145px;
-}
-
-
-.frame-flower-left {
-    left: -55px;
-    bottom: -50px;
-}
-
-
-.frame-flower-right {
-    right: -55px;
-    top: -50px;
-
-    transform: rotate(180deg);
-}
-
-
-.frame-flower span {
-    position: absolute;
-
-    left: 20px;
-    top: 35px;
+    z-index: 6;
 
     color: #c98289;
 
     font-size: 75px;
+
+    opacity: .95;
 }
 
 
-.frame-flower i {
-    position: absolute;
-
-    width: 45px;
-    height: 18px;
-
-    border: 1px solid rgba(125,141,112,.7);
-
-    border-radius: 100% 0 100% 0;
+.frame-flower-top {
+    top: -42px;
+    right: -35px;
 }
 
 
-.frame-flower i:nth-of-type(1) {
-    top: 5px;
-    left: 55px;
-
-    transform: rotate(60deg);
+.frame-flower-bottom {
+    bottom: -42px;
+    left: -35px;
 }
 
 
-.frame-flower i:nth-of-type(2) {
-    top: 85px;
-    left: 3px;
-
-    transform: rotate(-25deg);
-}
-
-
-.frame-flower i:nth-of-type(3) {
-    top: 110px;
-    left: 65px;
-
-    transform: rotate(30deg);
-}
-
-
-/* =========================================
-   HERO CONTENT
-========================================= */
+/* ========================================
+   HERO TEXT
+======================================== */
 
 .invitation-label {
     color: var(--gold);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .6rem;
+    font-size: .62rem;
 
-    letter-spacing: 5px;
+    letter-spacing: 6px;
 }
 
 
 .frame-line {
     width: 230px;
 
-    margin: 22px 0 30px;
+    margin:
+        20px
+        0
+        30px;
 
     display: flex;
 
@@ -572,7 +548,22 @@ textarea {
 
     height: 1px;
 
-    background: var(--gold-light);
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--gold)
+        );
+}
+
+
+.frame-line span:last-child {
+    background:
+        linear-gradient(
+            90deg,
+            var(--gold),
+            transparent
+        );
 }
 
 
@@ -583,11 +574,13 @@ textarea {
 }
 
 
-/* =========================================
+/* ========================================
    NAMES
-========================================= */
+======================================== */
 
 .main-names {
+    width: 100%;
+
     display: flex;
 
     align-items: center;
@@ -598,35 +591,49 @@ textarea {
 
 
 .main-names h1 {
-    position: relative;
-
     color: var(--rose-dark);
 
-    font-family: "Aref Ruqaa", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    /*
-       أصغر وأنعم من الصورة الحالية
-    */
-    font-size: clamp(2.8rem,6vw,4.6rem);
+    font-size:
+        clamp(
+            3.1rem,
+            7vw,
+            5.4rem
+        );
 
     font-weight: 400;
 
-    line-height: 1.15;
+    line-height: 1;
+
+    white-space: nowrap;
 }
 
 
-.main-names h1::after {
-    content: "";
+.ampersand {
+    color: var(--gold);
 
-    position: absolute;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    left: 50%;
-    bottom: -7px;
+    font-size: 2.3rem;
 
-    width: 55%;
+    font-style: italic;
+}
+
+
+.hero-divider {
+    width: 230px;
+
     height: 1px;
 
-    transform: translateX(-50%);
+    margin:
+        25px
+        0
+        20px;
 
     background:
         linear-gradient(
@@ -638,42 +645,46 @@ textarea {
 }
 
 
-.ampersand {
-    color: var(--gold);
+.hero-message {
+    color: #806b68;
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Lateef",
+        serif;
 
-    font-size: 2rem;
+    font-size: 1.65rem;
 
-    font-style: italic;
+    line-height: 1.4;
+
+    font-weight: 600;
 }
 
 
-.hero-message {
-    max-width: 560px;
+.hero-message-small {
+    margin-top: 8px;
 
-    margin-top: 32px;
+    color: var(--muted);
 
-    color: #806967;
+    font-family:
+        "Lateef",
+        serif;
 
-    font-family: "Lateef", serif;
+    font-size: 1.35rem;
 
-    font-size: 1.45rem;
-
-    line-height: 1.7;
+    line-height: 1.5;
 }
 
 
 .frame-bottom-line {
-    width: min(350px,100%);
+    width: min(390px, 100%);
 
-    margin-top: 28px;
+    margin-top: 30px;
 
     display: flex;
 
     align-items: center;
 
-    gap: 12px;
+    gap: 14px;
 }
 
 
@@ -689,22 +700,29 @@ textarea {
 .frame-bottom-line b {
     color: var(--rose-dark);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .65rem;
+    font-size: .68rem;
 
-    letter-spacing: 2px;
+    font-weight: 400;
+
+    letter-spacing: 3px;
 }
 
 
-/* =========================================
+/* ========================================
    SCROLL
-========================================= */
+======================================== */
 
 .scroll-indicator {
     width: fit-content;
 
-    margin: 30px auto 0;
+    margin:
+        25px
+        auto
+        0;
 
     display: flex;
 
@@ -721,21 +739,25 @@ textarea {
 
 
 .scroll-indicator span {
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .45rem;
+    font-size: .46rem;
 
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 }
 
 
 .scroll-indicator i {
     position: relative;
 
-    width: 20px;
+    width: 22px;
     height: 35px;
 
-    border: 1px solid rgba(116,65,73,.35);
+    border:
+        1px solid
+        rgba(116,65,73,.35);
 
     border-radius: 20px;
 }
@@ -746,13 +768,14 @@ textarea {
 
     position: absolute;
 
+    top: 7px;
     left: 50%;
-    top: 6px;
 
     width: 2px;
     height: 6px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     background: var(--rose);
 
@@ -760,7 +783,8 @@ textarea {
 
     animation:
         scrollAnimation
-        1.5s infinite;
+        1.5s
+        infinite;
 }
 
 
@@ -770,7 +794,7 @@ textarea {
         opacity: 0;
 
         transform:
-            translate(-50%,0);
+            translate(-50%, 0);
     }
 
     30% {
@@ -781,116 +805,119 @@ textarea {
         opacity: 0;
 
         transform:
-            translate(-50%,12px);
+            translate(-50%, 12px);
     }
 }
 
 
-/* =========================================
+/* ========================================
    STORY
-========================================= */
+======================================== */
 
 .story-section {
     background:
-        rgba(255,255,255,.35);
+        radial-gradient(
+            circle at 10% 50%,
+            rgba(212,169,168,.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 40%,
+            rgba(212,169,168,.12),
+            transparent 30%
+        );
 }
 
 
-.story-card {
-    position: relative;
+.story-text {
+    color: #6f5b59;
 
-    width: min(620px,100%);
-
-    margin: 50px auto 0;
-
-    padding: 50px 35px;
-
-    border:
-        1px solid
-        var(--border);
-
-    background:
-        rgba(255,253,249,.8);
-
-    box-shadow:
-        0 25px 60px
-        rgba(90,60,60,.06);
-}
-
-
-.story-icon {
-    margin-bottom: 20px;
-
-    color: var(--gold);
+    font-family:
+        "Lateef",
+        serif;
 
     font-size: 2rem;
+
+    line-height: 1.6;
 }
 
 
-.story-card p {
-    margin: 12px auto;
+.story-text-small {
+    margin-top: 12px;
 
-    color: #806967;
+    color: var(--muted);
 
-    font-family: "Lateef", serif;
-
-    font-size: 1.45rem;
-
-    line-height: 1.7;
+    font-size: 1.55rem;
 }
 
 
-.story-card strong {
-    display: block;
-
+.couple-signature {
     margin-top: 25px;
 
     color: var(--rose-dark);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .8rem;
+    font-size: 1.1rem;
 
     letter-spacing: 2px;
 }
 
 
-/* =========================================
+/* ========================================
    DATE
-========================================= */
+======================================== */
+
+.date-section {
+    background:
+        rgba(255,255,255,.28);
+}
+
 
 .big-date {
-    margin-top: 15px;
-
     display: flex;
 
-    flex-direction: column;
-
+    justify-content: center;
     align-items: center;
 
-    font-family: "Playfair Display", serif;
+    gap: 22px;
+
+    margin-top: 30px;
 }
 
 
 .big-date span {
     color: var(--gold);
 
-    font-size: .9rem;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    letter-spacing: 7px;
+    font-size: .7rem;
+
+    letter-spacing: 4px;
 }
 
 
 .big-date strong {
-    margin: -7px 0;
-
     color: var(--rose-dark);
 
-    font-size: clamp(7rem,20vw,11rem);
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            5rem,
+            12vw,
+            8rem
+        );
 
     font-weight: 400;
 
-    line-height: 1;
+    line-height: .9;
 }
 
 
@@ -899,176 +926,143 @@ textarea {
 
     color: var(--muted);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .65rem;
+    font-size: .75rem;
 
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 }
 
 
-/* =========================================
+/* ========================================
    CALENDAR
-========================================= */
+======================================== */
 
 .calendar {
-    width: min(430px,100%);
+    width: min(420px, 100%);
 
-    margin: 50px auto 0;
+    margin:
+        45px
+        auto
+        0;
 
-    padding: 30px 25px;
+    padding: 28px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--border);
 
     background:
-        rgba(255,253,249,.8);
-
-    box-shadow:
-        0 25px 60px
-        rgba(90,60,60,.06);
+        rgba(255,255,255,.45);
 }
 
 
 .calendar-header {
-    display: flex;
+    margin-bottom: 22px;
 
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 20px;
-}
-
-
-.calendar-header span {
-    flex: 1;
-
-    height: 1px;
-
-    background: var(--gold-light);
-}
-
-
-.calendar-header h3 {
     color: var(--rose-dark);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .68rem;
+    font-size: .8rem;
 
-    font-weight: 500;
-
-    letter-spacing: 2px;
+    letter-spacing: 4px;
 }
 
 
-.calendar-grid {
+.calendar-days,
+.calendar-numbers {
     display: grid;
 
     grid-template-columns:
-        repeat(7,1fr);
+        repeat(7, 1fr);
+
+    gap: 9px;
 }
 
 
 .calendar-days {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 
     color: var(--gold);
 
-    font-family: "Playfair Display", serif;
-
-    font-size: .55rem;
+    font-size: .65rem;
 }
 
 
-.calendar-numbers {
-    row-gap: 8px;
-
-    color: #7b6563;
-
-    font-family: "Playfair Display", serif;
-
-    font-size: .68rem;
-}
-
-
-.calendar-grid > span {
-    position: relative;
-
-    min-height: 31px;
+.calendar-numbers span {
+    min-height: 32px;
 
     display: flex;
 
-    align-items: center;
     justify-content: center;
+    align-items: center;
+
+    color: var(--muted);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: .72rem;
 }
 
 
-.wedding-day {
-    color: white;
-}
-
-
-.wedding-day::before {
-    content: "♥";
-
-    position: absolute;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%,-50%);
-
-    color: var(--rose);
-
-    font-size: 35px;
-}
-
-
-.wedding-day b {
+.calendar-numbers .wedding-day {
     position: relative;
 
-    z-index: 2;
+    color: white;
+
+    background: var(--rose);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 5px 18px
+        rgba(172,98,108,.3);
 }
 
 
-/* =========================================
+/* ========================================
    COUNTDOWN
-========================================= */
+======================================== */
 
 .countdown-wrapper {
-    margin-top: 60px;
+    margin-top: 55px;
 }
 
 
 .countdown-wrapper > p {
+    margin-bottom: 18px;
+
     color: var(--gold);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size: .55rem;
 
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 }
 
 
 .countdown {
-    margin-top: 25px;
-
     display: flex;
 
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
-    gap: clamp(6px,2vw,18px);
+    gap: 18px;
 }
 
 
-.countdown > div {
-    min-width: 75px;
-
-    text-align: center;
+.countdown div {
+    min-width: 65px;
 }
 
 
@@ -1077,51 +1071,49 @@ textarea {
 
     color: var(--rose-dark);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: clamp(2rem,7vw,3.8rem);
+    font-size: 2rem;
 
     font-weight: 400;
-
-    line-height: 1;
 }
 
 
 .countdown span {
-    display: block;
-
-    margin-top: 8px;
-
     color: var(--muted);
 
-    font-family: "Playfair Display", serif;
+    font-size: .45rem;
 
-    font-size: .43rem;
-
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
 }
 
 
 .countdown i {
     width: 1px;
-    height: 45px;
+    height: 28px;
 
     background: var(--gold-light);
 }
 
 
-/* =========================================
+/* ========================================
    LOCATION
-========================================= */
+======================================== */
 
 .location-section {
     background:
-        rgba(255,255,255,.35);
+        radial-gradient(
+            circle at 50% 50%,
+            rgba(255,255,255,.8),
+            transparent 60%
+        );
 }
 
 
 .location-icon {
-    margin: 10px 0;
+    margin: 15px 0;
 
     color: var(--gold);
 
@@ -1132,23 +1124,31 @@ textarea {
 .location-name {
     color: var(--rose-dark);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size:
-        clamp(2.8rem,8vw,5.5rem);
+        clamp(
+            2.4rem,
+            6vw,
+            4.5rem
+        );
 
     font-weight: 400;
-
-    font-style: italic;
 }
 
 
 .location-place {
+    margin-top: 5px;
+
     color: var(--gold);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .65rem;
+    font-size: .8rem;
 
     letter-spacing: 5px;
 }
@@ -1157,65 +1157,117 @@ textarea {
 .location-card {
     position: relative;
 
-    width: min(560px,100%);
+    width: min(600px, 100%);
 
-    margin: 45px auto 0;
+    margin:
+        40px
+        auto
+        0;
 
-    padding: 45px 30px;
+    padding:
+        55px
+        35px;
 
-    border: 1px solid var(--border);
+    border:
+        1px solid
+        var(--gold-light);
 
     background:
-        rgba(255,253,249,.82);
+        rgba(255,255,255,.55);
 
     box-shadow:
-        0 25px 60px
-        rgba(90,60,60,.07);
+        0 25px 70px
+        rgba(94,60,63,.08);
 }
 
 
 .location-card-decoration {
     color: var(--gold);
 
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 
-.location-card-title {
-    margin-top: 5px;
+.venue-label {
+    margin-top: 10px;
 
     color: var(--gold);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .75rem;
+    font-size: .55rem;
+
+    letter-spacing: 4px;
+}
+
+
+.location-card h3 {
+    margin-top: 10px;
+
+    color: var(--rose-dark);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 2.1rem;
+
+    font-weight: 400;
+
+    letter-spacing: 2px;
+}
+
+
+.location-details {
+    width: min(390px, 100%);
+
+    margin:
+        35px
+        auto;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 25px;
+}
+
+
+.location-details div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.location-details small {
+    color: var(--gold);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: .52rem;
 
     letter-spacing: 3px;
 }
 
 
-.location-card h3 {
-    margin-top: 8px;
-
+.location-details strong {
     color: var(--rose-dark);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: 2rem;
+    font-size: .75rem;
 
     font-weight: 400;
-}
-
-
-.location-details {
-    margin: 30px 0;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 30px;
 }
 
 
@@ -1227,233 +1279,109 @@ textarea {
 }
 
 
-.location-details div {
-    min-width: 120px;
-}
-
-
-.location-details small,
-.venue-address small {
-    display: block;
-
-    color: var(--gold);
-
-    font-family: "Playfair Display", serif;
-
-    font-size: .46rem;
-
-    letter-spacing: 2px;
-}
-
-
-.location-details strong,
-.venue-address strong {
-    display: block;
-
-    margin-top: 6px;
-
-    color: var(--text);
-
-    font-family: "Playfair Display", serif;
-
-    font-size: .72rem;
-
-    font-weight: 500;
-}
-
-
-.venue-address {
-    margin-bottom: 30px;
-}
-
-
-/* =========================================
+/* ========================================
    BUTTON
-========================================= */
+======================================== */
 
 .main-button {
-    min-height: 52px;
+    min-width: 190px;
 
-    padding: 12px 27px;
+    padding:
+        13px
+        25px;
 
     display: inline-flex;
 
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
     gap: 9px;
 
-    border: 0;
+    border: 1px solid var(--gold);
 
-    border-radius: 100px;
+    color: var(--rose-dark);
 
-    color: white;
+    background: transparent;
 
-    background:
-        linear-gradient(
-            135deg,
-            #b26a72,
-            #864a53
-        );
-
-    box-shadow:
-        0 13px 30px
-        rgba(128,70,77,.2);
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size: .65rem;
+
+    letter-spacing: 2px;
 
     text-decoration: none;
 
     cursor: pointer;
 
-    transition: .3s ease;
+    transition:
+        .3s ease;
 }
 
 
 .main-button:hover {
-    transform: translateY(-3px);
+    color: white;
 
-    box-shadow:
-        0 18px 35px
-        rgba(128,70,77,.27);
+    background: var(--rose);
+
+    border-color: var(--rose);
+
+    transform: translateY(-2px);
 }
 
 
-.main-button:disabled {
-    opacity: .6;
+/* ========================================
+   NOTE
+======================================== */
+
+.note-section {
+    min-height: 80vh;
 }
 
 
-/* =========================================
-   ADULTS ONLY
-========================================= */
+.note-card {
+    width: min(620px, 100%);
 
-.adults-card {
-    width: min(560px,100%);
+    margin:
+        35px
+        auto
+        0;
 
-    margin: 35px auto 0;
-
-    padding: 48px 30px;
+    padding:
+        65px
+        35px;
 
     border:
         1px solid
-        rgba(184,147,94,.35);
+        var(--border);
 
     background:
         rgba(255,255,255,.55);
 
     box-shadow:
-        0 20px 50px
-        rgba(116,65,73,.08);
+        0 25px 65px
+        rgba(94,60,63,.08);
 }
 
 
-.adults-heart {
-    display: block;
-
-    margin-bottom: 15px;
-
+.note-icon {
     color: var(--rose);
-
-    font-size: 1.7rem;
-}
-
-
-.adults-card h2 {
-    margin-bottom: 15px;
-
-    color: var(--rose-dark);
-
-    font-family: "Playfair Display", serif;
 
     font-size: 2rem;
-
-    font-weight: 400;
 }
 
 
-.adults-card p {
-    max-width: 450px;
-
-    margin: auto;
-
-    color: var(--muted);
-
-    font-family: "Lateef", serif;
-
-    font-size: 1.4rem;
-
-    line-height: 1.7;
-}
-
-
-.adults-card strong {
-    display: block;
-
-    margin-top: 10px;
-
-    color: var(--rose);
-
-    font-family: "Playfair Display", serif;
-
-    font-size: .75rem;
-
-    letter-spacing: 1.5px;
-}
-
-
-/* =========================================
-   RESERVED
-========================================= */
-
-.reserved-section {
-    padding-top: 70px;
-
-    padding-bottom: 70px;
-}
-
-
-.reserved-card {
-    max-width: 430px;
-
-    margin: auto;
-
-    padding: 35px 25px;
-
-    border-top:
-        1px solid
-        rgba(184,147,94,.4);
-
-    border-bottom:
-        1px solid
-        rgba(184,147,94,.4);
-}
-
-
-.reserved-card > span {
-    color: var(--rose);
-
-    font-size: 1.7rem;
-}
-
-
-.reserved-card p {
-    margin: 5px 0;
-
-    color: var(--muted);
-
-    font-family: "Lateef", serif;
-
-    font-size: 1.25rem;
-}
-
-
-.reserved-card strong {
-    display: block;
+.note-card h2 {
+    margin:
+        20px
+        0;
 
     color: var(--rose-dark);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size: 2.3rem;
 
@@ -1461,45 +1389,198 @@ textarea {
 }
 
 
-/* =========================================
-   GUEST BOOK
-========================================= */
+.note-card p {
+    color: var(--muted);
+
+    font-family:
+        "Lateef",
+        serif;
+
+    font-size: 1.45rem;
+
+    line-height: 1.7;
+}
+
+
+.note-signature {
+    display: block;
+
+    margin-top: 25px;
+
+    color: var(--rose);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: .55rem;
+
+    font-weight: 600;
+
+    letter-spacing: 4px;
+}
+
+
+/* ========================================
+   RESERVED SEAT
+======================================== */
+
+.seat-section {
+    min-height: 75vh;
+}
+
+
+.seat-card {
+    width: min(600px, 100%);
+
+    margin: auto;
+
+    padding:
+        65px
+        30px;
+
+    border-top:
+        1px solid
+        var(--gold-light);
+
+    border-bottom:
+        1px solid
+        var(--gold-light);
+
+    background:
+        rgba(255,255,255,.25);
+}
+
+
+.seat-icon {
+    color: var(--gold);
+
+    font-size: 2rem;
+}
+
+
+.seat-card h2 {
+    margin:
+        10px
+        0
+        12px;
+
+    color: var(--rose-dark);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 2.5rem;
+
+    font-weight: 400;
+}
+
+
+.seat-card > p:not(.section-label) {
+    color: var(--muted);
+
+    font-family:
+        "Lateef",
+        serif;
+
+    font-size: 1.45rem;
+
+    line-height: 1.5;
+}
+
+
+.seat-number {
+    margin-top: 25px;
+
+    color: var(--rose-dark);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 3.5rem;
+}
+
+
+.seat-card > span {
+    color: var(--gold);
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: .55rem;
+
+    letter-spacing: 4px;
+}
+
+
+/* ========================================
+   GUESTBOOK
+======================================== */
+
+.guestbook-section {
+    background:
+        rgba(255,255,255,.25);
+}
+
+
+.section-description {
+    margin:
+        15px
+        auto
+        35px;
+
+    color: var(--muted);
+
+    font-family:
+        "Lateef",
+        serif;
+
+    font-size: 1.45rem;
+
+    line-height: 1.5;
+}
+
 
 .guestbook-card {
-    width: min(560px,100%);
+    width: min(600px, 100%);
 
-    margin: 40px auto 0;
+    margin: auto;
 
     padding: 35px;
-
-    text-align: left;
 
     border:
         1px solid
         var(--border);
 
     background:
-        rgba(255,253,249,.82);
-
-    box-shadow:
-        0 25px 60px
-        rgba(90,60,60,.07);
+        rgba(255,255,255,.55);
 }
 
 
-.form-group + .form-group {
-    margin-top: 20px;
+.form-group {
+    margin-bottom: 20px;
+
+    text-align: left;
 }
 
 
 .form-group label {
     display: block;
 
-    margin-bottom: 8px;
+    margin-bottom: 7px;
 
     color: var(--rose-dark);
 
+    font-family:
+        "Playfair Display",
+        serif;
+
     font-size: .7rem;
+
+    letter-spacing: 1px;
 }
 
 
@@ -1507,29 +1588,27 @@ textarea {
 .form-group textarea {
     width: 100%;
 
+    padding:
+        13px
+        14px;
+
+    outline: none;
+
     border:
         1px solid
         var(--border);
 
-    outline: none;
-
     color: var(--text);
 
-    background: rgba(255,255,255,.8);
-}
+    background:
+        rgba(255,255,255,.55);
 
-
-.form-group input {
-    height: 52px;
-
-    padding: 0 17px;
+    transition: .25s;
 }
 
 
 .form-group textarea {
-    min-height: 135px;
-
-    padding: 15px 17px;
+    min-height: 120px;
 
     resize: vertical;
 }
@@ -1537,49 +1616,41 @@ textarea {
 
 .form-group input:focus,
 .form-group textarea:focus {
-    border-color: var(--rose-light);
-
-    box-shadow:
-        0 0 0 4px
-        rgba(173,100,109,.06);
+    border-color: var(--gold);
 }
 
 
 .send-comment-button {
     width: 100%;
-
-    margin-top: 25px;
 }
 
 
-/* =========================================
+/* ========================================
    SUCCESS
-========================================= */
+======================================== */
 
 .comment-success {
     display: none;
 
-    padding: 20px 5px;
-
-    text-align: center;
+    padding: 35px;
 }
 
 
-.comment-success span {
-    display: block;
-
+.comment-success > span {
     color: var(--rose);
 
-    font-size: 3rem;
+    font-size: 2rem;
 }
 
 
 .comment-success h3 {
-    margin-top: 8px;
+    margin: 12px 0;
 
     color: var(--rose-dark);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size: 2rem;
 
@@ -1590,26 +1661,32 @@ textarea {
 .comment-success p {
     color: var(--muted);
 
-    font-family: "Lateef", serif;
+    font-family:
+        "Lateef",
+        serif;
 
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 
-/* =========================================
+/* ========================================
    COMMENTS
-========================================= */
+======================================== */
 
 .comments-area {
-    width: min(620px,100%);
+    width: min(650px, 100%);
 
-    margin: 60px auto 0;
+    margin:
+        50px
+        auto
+        0;
 }
 
 
 .comments-title {
     display: flex;
 
+    justify-content: center;
     align-items: center;
 
     gap: 12px;
@@ -1628,9 +1705,11 @@ textarea {
 .comments-title p {
     color: var(--gold);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .5rem;
+    font-size: .55rem;
 
     letter-spacing: 3px;
 }
@@ -1641,41 +1720,12 @@ textarea {
 
     display: grid;
 
-    gap: 14px;
-}
-
-
-.empty-comments {
-    padding: 35px;
-
-    text-align: center;
-
-    color: var(--muted);
-
-    border:
-        1px dashed
-        var(--border);
-}
-
-
-.empty-comments span {
-    color: var(--gold);
-
-    font-size: 1.8rem;
-}
-
-
-.empty-comments p {
-    margin-top: 8px;
-
-    font-family: "Lateef", serif;
-
-    font-size: 1.15rem;
+    gap: 15px;
 }
 
 
 .comment-item {
-    padding: 22px 25px;
+    padding: 20px;
 
     text-align: left;
 
@@ -1684,27 +1734,27 @@ textarea {
         var(--border);
 
     background:
-        rgba(255,253,249,.75);
+        rgba(255,255,255,.45);
 }
 
 
 .comment-item h4 {
     color: var(--rose-dark);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
     font-size: 1rem;
 }
 
 
 .comment-item p {
-    margin-top: 6px;
+    margin-top: 8px;
 
     color: var(--muted);
 
-    font-family: "Lateef", serif;
-
-    font-size: 1.15rem;
+    line-height: 1.6;
 }
 
 
@@ -1715,64 +1765,86 @@ textarea {
 
     color: var(--gold);
 
-    font-size: .45rem;
+    font-size: .65rem;
 }
 
 
-/* =========================================
+.empty-comments {
+    padding: 25px;
+
+    color: var(--muted);
+}
+
+
+.empty-comments span {
+    color: var(--gold);
+
+    font-size: 1.7rem;
+}
+
+
+.empty-comments p {
+    margin-top: 8px;
+}
+
+
+/* ========================================
    FOOTER
-========================================= */
+======================================== */
 
 .footer {
-    position: relative;
-
-    padding: 80px 20px;
+    padding:
+        75px
+        20px;
 
     text-align: center;
 
-    background: #f3e5de;
-
-    overflow: hidden;
+    background:
+        rgba(248,238,232,.75);
 }
 
 
-.footer > div {
+.footer-ornament {
     color: var(--gold);
 
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 
 .footer h2 {
-    margin-top: 10px;
+    margin:
+        15px
+        0;
 
     color: var(--rose-dark);
 
-    font-family: "Aref Ruqaa", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: clamp(2.2rem,7vw,3.5rem);
+    font-size: 2.3rem;
 
     font-weight: 400;
 }
 
 
 .footer h2 span {
-    margin: 0 8px;
-
     color: var(--gold);
 
-    font-family: "Playfair Display", serif;
+    font-style: italic;
 }
 
 
 .footer p {
     color: var(--gold);
 
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    font-size: .58rem;
+    font-size: .6rem;
 
-    letter-spacing: 3px;
+    letter-spacing: 4px;
 }
 
 
@@ -1783,20 +1855,23 @@ textarea {
 
     color: var(--muted);
 
-    font-family: "Lateef", serif;
+    font-family:
+        "Lateef",
+        serif;
 
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 
-/* =========================================
+/* ========================================
    REVEAL
-========================================= */
+======================================== */
 
 .reveal {
     opacity: 0;
 
-    transform: translateY(30px);
+    transform:
+        translateY(25px);
 
     transition:
         opacity .9s ease,
@@ -1807,32 +1882,47 @@ textarea {
 .reveal.visible {
     opacity: 1;
 
-    transform: translateY(0);
+    transform:
+        translateY(0);
 }
 
 
-/* =========================================
+/* ========================================
    MOBILE
-========================================= */
+======================================== */
 
 @media (max-width: 700px) {
 
-    .side-decoration {
-        opacity: .15;
+    .section {
+        min-height: auto;
+
+        padding:
+            90px
+            16px;
     }
 
 
     .hero {
-        padding: 35px 15px;
+        padding:
+            30px
+            12px
+            25px;
+    }
+
+
+    .hero-top {
+        font-size: 1.15rem;
     }
 
 
     .wedding-frame {
         width: 94vw;
 
-        min-height: 540px;
+        min-height: 500px;
 
-        padding: 60px 22px;
+        padding:
+            65px
+            20px;
     }
 
 
@@ -1842,48 +1932,192 @@ textarea {
 
 
     .main-names h1 {
-        font-size: 2.65rem;
+        font-size:
+            clamp(
+                2.35rem,
+                10vw,
+                3.6rem
+            );
     }
 
 
     .ampersand {
-        font-size: 1.5rem;
+        font-size: 1.65rem;
+    }
+
+
+    .invitation-label {
+        font-size: .48rem;
+
+        letter-spacing: 4px;
     }
 
 
     .hero-message {
-        font-size: 1.25rem;
+        font-size: 1.4rem;
+    }
 
-        line-height: 1.65;
+
+    .hero-message-small {
+        font-size: 1.15rem;
     }
 
 
     .frame-flower {
-        transform: scale(.75);
+        font-size: 55px;
     }
 
 
-    .frame-flower-left {
-        left: -55px;
+    .frame-flower-top {
+        right: -25px;
+        top: -28px;
     }
 
 
-    .frame-flower-right {
-        right: -55px;
-
-        transform:
-            rotate(180deg)
-            scale(.75);
+    .frame-flower-bottom {
+        left: -25px;
+        bottom: -28px;
     }
 
 
-    .section {
-        padding: 85px 18px;
+    .story-text {
+        font-size: 1.7rem;
+    }
+
+
+    .story-text-small {
+        font-size: 1.35rem;
+    }
+
+
+    .big-date {
+        gap: 12px;
+    }
+
+
+    .big-date strong {
+        font-size: 5rem;
+    }
+
+
+    .big-date span {
+        font-size: .55rem;
+
+        letter-spacing: 2px;
     }
 
 
     .calendar {
-        padding: 25px 15px;
+        padding: 20px;
+    }
+
+
+    .countdown {
+        gap: 8px;
+    }
+
+
+    .countdown div {
+        min-width: 55px;
+    }
+
+
+    .countdown strong {
+        font-size: 1.55rem;
+    }
+
+
+    .countdown span {
+        font-size: .38rem;
+    }
+
+
+    .location-card {
+        padding:
+            45px
+            20px;
+    }
+
+
+    .location-card h3 {
+        font-size: 1.55rem;
+    }
+
+
+    .location-details {
+        gap: 15px;
+    }
+
+
+    .note-card {
+        padding:
+            50px
+            20px;
+    }
+
+
+    .note-card h2 {
+        font-size: 1.9rem;
+    }
+
+
+    .seat-card {
+        padding:
+            50px
+            15px;
+    }
+
+
+    .guestbook-card {
+        padding: 22px;
+    }
+
+
+    .side-decoration {
+        opacity: .15;
+    }
+
+}
+
+
+@media (max-width: 420px) {
+
+    .wedding-frame {
+        min-height: 470px;
+
+        padding:
+            60px
+            12px;
+    }
+
+
+    .main-names h1 {
+        font-size:
+            clamp(
+                2rem,
+                9.5vw,
+                3rem
+            );
+    }
+
+
+    .ampersand {
+        font-size: 1.4rem;
+    }
+
+
+    .hero-message {
+        font-size: 1.3rem;
+    }
+
+
+    .hero-message-small {
+        font-size: 1.05rem;
+    }
+
+
+    .frame-bottom-line b {
+        font-size: .55rem;
     }
 
 
@@ -1892,81 +2126,18 @@ textarea {
     }
 
 
-    .countdown > div {
-        min-width: 58px;
+    .countdown div {
+        min-width: 48px;
     }
 
 
     .countdown strong {
-        font-size: 2rem;
+        font-size: 1.3rem;
     }
 
 
     .countdown i {
-        height: 35px;
-    }
-
-
-    .location-name {
-        font-size: 2.8rem;
-    }
-
-
-    .location-card {
-        padding: 38px 20px;
-    }
-
-
-    .location-details {
-        gap: 12px;
-    }
-
-
-    .location-details div {
-        min-width: 100px;
-    }
-
-
-    .guestbook-card {
-        padding: 28px 18px;
-    }
-
-}
-
-
-@media (max-width: 420px) {
-
-    .main-names {
-        flex-direction: column;
-
-        gap: 0;
-    }
-
-
-    .main-names h1 {
-        font-size: 2.8rem;
-    }
-
-
-    .ampersand {
-        font-size: 1.3rem;
-
-        margin: -4px 0;
-    }
-
-
-    .wedding-frame {
-        min-height: 550px;
-    }
-
-
-    .location-details {
-        gap: 5px;
-    }
-
-
-    .location-details div {
-        min-width: 85px;
+        height: 22px;
     }
 
 }
